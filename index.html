@@ -1,0 +1,514 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩  | Premium Driving School Basingstoke & Reading | Manual & Auto Lessons</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Swiper for better reviews carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+       
+        * {
+            font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+       
+        :root {
+            --primary: #F5A623;
+            --primary-dark: #dc8e12;
+            --bg-deep: #05070A;
+            --bg-card: #11141C;
+            --text-light: #F0F4FA;
+        }
+       
+        body {
+            background: #020308;
+            color: #EFF3FC;
+        }
+       
+        /* Custom navbar glassmorphism */
+        .glass-nav {
+            background: rgba(5, 7, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245, 166, 35, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+       
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+       
+        .nav-link:hover {
+            color: #F5A623;
+            transform: translateY(-2px);
+        }
+       
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #F5A623;
+            transition: width 0.3s ease;
+        }
+       
+        .nav-link:hover::after {
+            width: 100%;
+        }
+       
+        .btn-primary {
+            background: #F5A623;
+            transition: all 0.3s;
+        }
+       
+        .btn-primary:hover {
+            background: #ffb84d;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(245, 166, 35, 0.4);
+        }
+       
+        .btn-outline-gold {
+            border: 2px solid #F5A623;
+            transition: all 0.3s;
+        }
+       
+        .btn-outline-gold:hover {
+            background: rgba(245, 166, 35, 0.15);
+            transform: translateY(-3px);
+        }
+       
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+       
+        .card-hover:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: #F5A623 !important;
+            box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.6);
+        }
+       
+        /* Hero slider custom */
+        .hero-swiper .swiper-slide {
+            background-size: cover;
+            background-position: center 30%;
+        }
+       
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 100%);
+        }
+       
+        /* Floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+       
+        .float-car {
+            animation: float 4s ease-in-out infinite;
+        }
+       
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #11141C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F5A623;
+            border-radius: 10px;
+        }
+       
+        /* Review swiper hover pause */
+        .review-swiper .swiper-slide {
+            transition: transform 0.3s;
+        }
+        .review-swiper .swiper-slide:hover {
+            transform: scale(1.02);
+        }
+
+        /* Why Choose Icons */
+        .why-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .why-card:hover .why-icon {
+            transform: scale(1.15) rotate(5deg);
+            color: #F5A623;
+        }
+
+        /* Services Section */
+        .service-card {
+            background: #11141C;
+            border: 1px solid #1F252F;
+            transition: all 0.4s ease;
+        }
+        .service-card:hover {
+            border-color: #F5A623;
+            transform: translateY(-10px);
+        }
+        .service-icon {
+            transition: all 0.4s ease;
+        }
+        .service-card:hover .service-icon {
+            color: #F5A623;
+            transform: scale(1.12);
+        }
+    </style>
+</head>
+<body class="bg-[#020308] text-zinc-200">
+    <!-- ENHANCED NAVBAR with Logo Image & Glassmorphism -->
+    <nav id="navbar" class="glass-nav sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#F5A623] to-[#dc8e12] rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-[#F5A623]/30 transform transition-all group-hover:scale-105">
+                    <i class="fa-solid fa-car-side text-black"></i>
+                </div>
+                <div>
+                    <!-- <span class="text-2xl font-extrabold tracking-tight">SJ</span> -->
+                    <span class="text-2xl font-extrabold tracking-tight text-[#F5A623]">DRIVE<span class="text-white">RIGHT</span></span>
+                    <div class="text-[10px] tracking-wider text-[#F5A623]/70">SCHOOL OF MOTORING</div>
+                </div>
+            </div>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+                <a href="#home" class="nav-link text-white">Home</a>
+                <a href="#about" class="nav-link text-white">About Our School</a>
+                <a href="#reviews" class="nav-link text-white">Reviews</a>
+                <a href="#faqs" class="nav-link text-white">FAQs</a>
+                <a href="#contact" class="nav-link text-white">Contact Us</a>
+            </div>
+            <!-- CTA Button -->
+            <a href="tel:07474438404"
+               class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-5 py-2.5 rounded-full font-bold flex items-center gap-2 text-black shadow-lg shadow-[#F5A623]/25">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span>07474 438404</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SLIDER -->
+    <section id="home" class="relative">
+        <div class="swiper hero-swiper w-full h-[95vh]">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 - VW Golf -->
+                <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+                    <div class="hero-overlay absolute inset-0"></div>
+                    <div class="relative z-10 h-full flex items-center justify-center text-center px-6">
+                        <div class="max-w-3xl">
+                            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full mb-6">
+                                <span class="text-[#F5A623]">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+                                <span class="text-sm tracking-wide">Basingstoke • Reading • UK</span>
+                            </div>
+                            <h1 class="text-6xl md:text-7xl font-bold leading-tight mb-6">Master the Road <span class="text-[#F5A623]">Drive with Confidence</span></h1>
+                            <p class="text-xl text-zinc-300 mb-10">Automatic & Manual | High 1st Time Pass Rate | Weekend Slots</p>
+                            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                                <a href="#contact" class="btn-primary text-black font-bold text-lg px-8 py-4 rounded-2xl flex items-center justify-center gap-2"><i class="fa-solid fa-calendar-check"></i> Book Your Lesson</a>
+                                <a href="tel:07532749660" class="btn-outline-gold text-[#F5A623] font-bold text-lg px-8 py-4 rounded-2xl flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp"></i> WhatsApp 07532 749660</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- floating car element -->
+        <div class="absolute bottom-8 right-8 z-20 hidden lg:block opacity-60 float-car">
+            <i class="fa-solid fa-car-side text-7xl text-[#F5A623] drop-shadow-2xl"></i>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Why Learners Choose 𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩  (Adapted from your image) -->
+    <section class="py-20 bg-[#05070A]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold tracking-tight">Why Learners Choose <span class="text-[#F5A623]">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span>?</h2>
+                <p class="mt-4 text-xl text-zinc-400 max-w-3xl mx-auto">
+                    As a rapidly growing premium driving school across Basingstoke & Reading, we provide professional driving lessons tailored to your local test area. 
+                    Our DVSA-licensed instructors use expert coaching to build your confidence and ensure you pass your test with ease.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="why-card bg-[#11141C] p-8 rounded-3xl border border-zinc-800 hover:border-[#F5A623]/50 text-center card-hover group">
+                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Say Goodbye to Driving Anxiety</h3>
+                    <p class="text-zinc-400">Calm, patient instruction in a modern VW Golf that makes learning enjoyable and stress-free.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="why-card bg-[#11141C] p-8 rounded-3xl border border-zinc-800 hover:border-[#F5A623]/50 text-center card-hover group">
+                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Proof in the Success Stories</h3>
+                    <p class="text-zinc-400">High first-time pass rate with real students sharing their success and confidence on the road.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="why-card bg-[#11141C] p-8 rounded-3xl border border-zinc-800 hover:border-[#F5A623]/50 text-center card-hover group">
+                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Progress You Can Feel</h3>
+                    <p class="text-zinc-400">Structured lessons with clear feedback and measurable improvement every single session.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="why-card bg-[#11141C] p-8 rounded-3xl border border-zinc-800 hover:border-[#F5A623]/50 text-center card-hover group">
+                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6">
+                        <i class="fa-solid fa-road"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Decode Any Junction, Anywhere</h3>
+                    <p class="text-zinc-400">Expert training on roundabouts, busy roads, motorways and every challenging situation in your test area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WELCOME + Why Choose (Split Layout Enhanced) -->
+    <section id="about" class="py-24 bg-[#0A0C12]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Left Image with realistic badge -->
+                <div class="relative group">
+                    <img src="images.jfif"
+                         alt="Driving instructor with student" class="rounded-3xl shadow-2xl w-full object-cover h-[500px] transition-transform duration-500 group-hover:scale-[1.02]">
+                    <div class="absolute -bottom-6 -right-6 bg-[#11161F] p-5 rounded-2xl border border-[#F5A623] shadow-xl backdrop-blur-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="text-5xl"><i class="fa-solid fa-star text-[#F5A623]"></i></div>
+                            <div><p class="font-bold text-xl">5.0 ★★★★★</p><p class="text-[#F5A623] text-sm">250+ Successful Students</p></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Content -->
+                <div>
+                    <span class="text-[#F5A623] font-semibold tracking-wider">🏆 PREMIER DRIVING SCHOOL</span>
+                    <h2 class="text-5xl font-bold mt-3 mb-6 leading-tight">Welcome to <span class="text-[#F5A623]">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></h2>
+                    <p class="text-xl text-zinc-300 mb-6">Your Premier Choice for Driving Lessons in Basingstoke & Reading</p>
+                    <p class="text-zinc-400 leading-relaxed mb-8">At 𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 , we pride ourselves on providing top-notch driving instruction. From beginners to advanced, we ensure every student drives with confidence, skill, and absolute safety.</p>
+                   
+                    <div class="space-y-6">
+                        <div class="flex gap-4"><div class="w-12 h-12 bg-[#F5A623]/10 text-[#F5A623] rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-chalkboard-user"></i></div><div><h4 class="text-xl font-bold">Personalized 1-on-1 Instruction</h4><p class="text-zinc-400">Dedicated expert instructor, lessons tailored to your pace.</p></div></div>
+                        <div class="flex gap-4"><div class="w-12 h-12 bg-[#F5A623]/10 text-[#F5A623] rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-clock"></i></div><div><h4 class="text-xl font-bold">Flexible Schedule</h4><p class="text-zinc-400">Evenings, weekends & intensive courses for busy lives.</p></div></div>
+                        <div class="flex gap-4"><div class="w-12 h-12 bg-[#F5A623]/10 text-[#F5A623] rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-car"></i></div><div><h4 class="text-xl font-bold">Brand New VW Golf</h4><p class="text-zinc-400">Manual & Automatic, dual controls, climate control & modern safety.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UPDATED SERVICES SECTION - LESSONS TAILORED FOR YOU -->
+    <section class="py-20 bg-[#05070A]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14">
+               <h2 class="text-5xl font-bold mt-3 mb-6 leading-tight">LESSONS TAILORED <span class="text-[#F5A623]">FOR YOU</span></h2>
+                <div class="w-24 h-1 bg-[#F5A623] mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Beginner Lessons -->
+                <div class="service-card p-8 rounded-3xl text-center card-hover">
+                    <div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6">
+                         <i class="fa-solid fa-car"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Beginner Lessons</h3>
+                    <p class="text-zinc-400 mb-6">Perfect for new drivers. Learn the basics and build confidence step by step.</p>
+                    <div class="text-[#F5A623] font-bold text-xl">From £35 / hour</div>
+                </div>
+
+                <!-- One Week Intensive -->
+                <div class="service-card p-8 rounded-3xl text-center card-hover">
+                    <div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">One Week Intensive Course</h3>
+                    <p class="text-zinc-400 mb-6">Fast-track your driving test with our 1 week intensive courses.</p>
+                    <div class="text-[#F5A623] font-bold text-xl">From £499</div>
+                </div>
+
+                <!-- Motorway Lessons -->
+                <div class="service-card p-8 rounded-3xl text-center card-hover">
+                    <div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6">
+                        <i class="fa-solid fa-road"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Motorway Lessons</h3>
+                    <p class="text-zinc-400 mb-6">Gain confidence and learn essential motorway skills with expert guidance.</p>
+                    <div class="text-[#F5A623] font-bold text-xl">From £45 / hour</div>
+                </div>
+
+                <!-- Refresher Lessons -->
+                <div class="service-card p-8 rounded-3xl text-center card-hover">
+                    <div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6">
+                        <i class="fa-solid fa-rotate"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Refresher Lessons</h3>
+                    <p class="text-zinc-400 mb-6">Brush up your skills and regain confidence on the road.</p>
+                    <div class="text-[#F5A623] font-bold text-xl">From £35 / hour</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DARK & GOLD BANNER -->
+    <section class="py-8 bg-[#11141C] border-y border-[#F5A623]/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center items-center gap-11 md:gap-16 text-center">
+                <div class="flex items-center gap-4">
+                    <i class="fa-solid fa-bolt text-4xl text-[#F5A623]"></i>
+                    <div>
+                        <p class="uppercase text-xs tracking-widest font-semibold text-zinc-400">DISCOUNT & PRICING</p>
+                        <p class="text-2xl font-bold text-[#F5A623]">BEST PRICE GUARANTEED</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fa-solid fa-clock text-4xl text-[#F5A623]"></i>
+                    <div>
+                        <p class="uppercase text-xs tracking-widest font-semibold text-zinc-400">OPENING HOURS</p>
+                        <p class="text-2xl font-bold text-white">MON-SUN 7AM-8PM</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fa-solid fa-phone text-4xl text-[#F5A623]"></i>
+                    <div>
+                        <p class="uppercase text-xs tracking-widest font-semibold text-zinc-400">GIVE US A CALL</p>
+                        <a href="tel:07474438404" class="text-2xl font-bold text-[#F5A623] hover:text-white transition">07474 438404</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- REVIEWS SECTION (horizontal swiper with pause on hover) -->
+    <section id="reviews" class="py-24 bg-[#05070A]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-5">What Our Students Say ⭐</h2>
+            <div class="w-20 h-1 bg-[#F5A623] mx-auto mb-12 rounded-full"></div>
+            <div class="swiper review-swiper overflow-hidden py-8">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><div class="bg-[#11161F] p-8 rounded-3xl border border-[#F5A623]/20 h-full"><div class="flex text-[#F5A623] mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="italic text-zinc-300 mb-6">“Taimur is an amazing instructor! I passed first time thanks to his calm teaching style & modern VW Golf.”</p><p class="font-bold">— Sarah M.</p><p class="text-zinc-500 text-sm">Basingstoke • Passed 2025</p></div></div>
+                    <div class="swiper-slide"><div class="bg-[#11161F] p-8 rounded-3xl border border-[#F5A623]/20 h-full"><div class="flex text-[#F5A623] mb-4">★★★★★</div><p class="italic text-zinc-300 mb-6">“Flexible weekend lessons and block booking discount saved me money. Very professional and patient. Highly recommended!”</p><p class="font-bold">— James Patel</p><p class="text-zinc-500 text-sm">Reading</p></div></div>
+                    <div class="swiper-slide"><div class="bg-[#11161F] p-8 rounded-3xl border border-[#F5A623]/20 h-full"><div class="flex text-[#F5A623] mb-4">★★★★★</div><p class="italic text-zinc-300 mb-6">“The intensive course + motorway lesson was a game changer. I feel super confident on the road. Thank you 𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 !”</p><p class="font-bold">— Priya K.</p><p class="text-zinc-500 text-sm">Basingstoke</p></div></div>
+                    <div class="swiper-slide"><div class="bg-[#11161F] p-8 rounded-3xl border border-[#F5A623]/20 h-full"><div class="flex text-[#F5A623] mb-4">★★★★★</div><p class="italic text-zinc-300 mb-6">“Excellent automatic lessons, brand new car, very kind instructor. Passed with flying colours.”</p><p class="font-bold">— Lauren W.</p><p class="text-zinc-500 text-sm">Reading</p></div></div>
+                    <div class="swiper-slide"><div class="bg-[#11161F] p-8 rounded-3xl border border-[#F5A623]/20 h-full"><div class="flex text-[#F5A623] mb-4">★★★★★</div><p class="italic text-zinc-300 mb-6">“Free theory test support helped me pass first try. Taimur goes the extra mile.”</p><p class="font-bold">— Daniel C.</p><p class="text-zinc-500 text-sm">Basingstoke</p></div></div>
+                </div>
+                <div class="swiper-pagination !relative !mt-8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Style -->
+    <section id="faqs" class="py-20 bg-[#0A0C12]">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-12">FAQs</h2>
+            <div class="space-y-5">
+                <details class="bg-[#11141C] rounded-2xl p-6 border-l-4 border-[#F5A623]"><summary class="font-bold text-xl cursor-pointer">How long does it take to learn to drive?</summary><p class="text-zinc-400 mt-3 ml-4">Most learners need 25–45 hours of professional lessons plus private practice. We'll tailor a plan for you.</p></details>
+                <details class="bg-[#11141C] rounded-2xl p-6 border-l-4 border-[#F5A623]"><summary class="font-bold text-xl cursor-pointer">Do you help with the theory test?</summary><p class="text-zinc-400 mt-3 ml-4">Absolutely! Free theory test support and resources for all block booking students.</p></details>
+                <details class="bg-[#11141C] rounded-2xl p-6 border-l-4 border-[#F5A623]"><summary class="font-bold text-xl cursor-pointer">What areas do you cover?</summary><p class="text-zinc-400 mt-3 ml-4">We primarily serve Basingstoke, Reading & surrounding Berkshire areas. Pick-up and drop-off included.</p></details>
+                <details class="bg-[#11141C] rounded-2xl p-6 border-l-4 border-[#F5A623]"><summary class="font-bold text-xl cursor-pointer">Can I do an intensive course & find a driving test?</summary><p class="text-zinc-400 mt-3 ml-4">Yes! We offer one-week intensive courses and can help find driving test cancellations.</p></details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CONTACT / CTA -->
+    <section id="contact" class="py-28 bg-gradient-to-br from-[#F5A623]/10 via-[#020308] to-[#020308] text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="inline-flex bg-[#F5A623]/20 rounded-full px-6 py-2 mb-6"><i class="fa-solid fa-phone-volume text-[#F5A623] mr-2"></i> 24/7 Support</div>
+            <h2 class="text-6xl font-bold mb-6">Ready to Hit the Road?</h2>
+            <p class="text-2xl text-zinc-300 mb-12">Let’s get you driving confidently today. Call, WhatsApp or email us now.</p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="tel:07474438404" class="flex-1 max-w-sm bg-[#F5A623] text-black py-6 rounded-2xl font-bold text-2xl flex items-center justify-center gap-4 hover:scale-105 transition shadow-xl"><i class="fa-solid fa-phone text-3xl"></i> 07474 438404</a>
+                <a href="tel:07532749660" class="flex-1 max-w-sm border-2 border-[#F5A623] py-6 rounded-2xl font-bold text-2xl hover:bg-[#F5A623] hover:text-black transition flex items-center justify-center gap-4"><i class="fa-brands fa-whatsapp"></i> 07532 749660</a>
+            </div>
+            <p class="mt-8 text-zinc-500 text-lg">✉️ Taimurmasood3@gmail.com | 📍 Basingstoke / Reading</p>
+        </div>
+    </section>
+
+    <!-- FOOTER (dark with branding) -->
+    <footer class="bg-[#05070A] py-16 border-t border-[#F5A623]/20">
+        <!-- Contact Form -->
+        <div class="max-w-4xl mx-auto px-6 mb-16">
+            <h3 class="text-3xl font-bold text-center mb-8 text-white">Get In Touch With Us</h3>
+            <form class="grid md:grid-cols-2 gap-6">
+                <input type="text" placeholder="Your Full Name" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white">
+                <input type="email" placeholder="Email Address" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white">
+                <input type="tel" placeholder="Phone Number" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white">
+                <input type="text" placeholder="Preferred Date / Time" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white">
+                <textarea placeholder="Your Message (Optional)" rows="4" class="md:col-span-2 bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white"></textarea>
+                <button type="submit" class="md:col-span-2 bg-[#F5A623] hover:bg-[#ffb84d] text-black font-bold py-4 rounded-2xl transition text-lg">SEND MESSAGE</button>
+            </form>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <div><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-[#F5A623] rounded-xl flex items-center justify-center"><i class="fa-solid fa-car-side text-black"></i></div><span class="text-2xl font-bold">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></div><p class="text-zinc-500">Expert driving lessons in Basingstoke & Reading. Manual & Automatic specialists.</p></div>
+            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="#home" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="#about" class="hover:text-[#F5A623] transition">About</a></li><li><a href="#reviews" class="hover:text-[#F5A623] transition">Reviews</a></li><li><a href="#faqs" class="hover:text-[#F5A623] transition">FAQs</a></li></ul></div>
+            <div><h5 class="font-bold mb-5 text-lg">Services</h5><ul class="text-zinc-400 space-y-2"><li>Manual Lessons</li><li>Automatic Lessons</li><li>Intensive Courses</li><li>Motorway / Night Driving</li></ul></div>
+            <div><h5 class="font-bold mb-5 text-lg">Connect</h5><div class="flex gap-6 text-3xl text-[#F5A623]"><i class="fa-brands fa-facebook hover:scale-110 transition"></i><i class="fa-brands fa-instagram hover:scale-110 transition"></i><i class="fa-brands fa-whatsapp hover:scale-110 transition"></i></div><p class="mt-8 text-sm text-zinc-500">© 2026 𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 . All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Swiper for Hero + Reviews
+        const heroSwiper = new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: { delay: 5000, disableOnInteraction: false },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            effect: 'fade',
+            fadeEffect: { crossFade: true },
+        });
+       
+        const reviewSwiper = new Swiper('.review-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 25,
+            loop: true,
+            autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true },
+            speed: 4000,
+            breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            allowTouchMove: true,
+            on: { init: function () { this.el.addEventListener('mouseenter', () => this.autoplay.stop()); this.el.addEventListener('mouseleave', () => this.autoplay.start()); } }
+        });
+       
+        // Smooth scroll for nav
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href && href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if(target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Navbar hide on scroll down, show on scroll up
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scroll down - hide navbar
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scroll up - show navbar
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
