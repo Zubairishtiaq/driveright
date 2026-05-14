@@ -264,9 +264,10 @@
             font-weight: 600;
             padding: 12px 0;
             border-bottom: 1px solid rgba(245, 166, 35, 0.2);
+            text-decoration: none;
         }
         .menu-phone {
-            margin-top: 30px;
+            margin-top: 20px;
             padding-top: 20px;
             border-top: 2px solid #F5A623;
         }
@@ -283,6 +284,28 @@
             font-weight: bold;
             border-bottom: none;
         }
+        .menu-call {
+            margin-top: 10px;
+        }
+        .menu-call a {
+            background: transparent;
+            border: 2px solid #F5A623;
+            color: #F5A623;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: none;
+            transition: all 0.3s ease;
+        }
+        .menu-call a:hover {
+            background: #F5A623;
+            color: black;
+        }
         .hamburger {
             display: none;
             cursor: pointer;
@@ -296,6 +319,9 @@
             .desktop-menu {
                 display: none !important;
             }
+        }
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -351,10 +377,16 @@
             <a href="faqs.html" class="text-white hover:text-[#F5A623] transition">FAQs</a>
             <a href="terms.html" class="text-white hover:text-[#F5A623] transition">Terms & Conditions</a>
             <a href="contactus.html" class="text-white hover:text-[#F5A623] transition">Contact Us</a>
-            <div class="menu-phone">
+            <div class="menu-call">
                 <a href="tel:+447532749660">
                     <i class="fa-solid fa-phone-volume"></i>
-                    +447532749660
+                    Call Us: +447532749660
+                </a>
+            </div>
+            <div class="menu-phone">
+                <a href="https://wa.me/447532749660">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    WhatsApp Us
                 </a>
             </div>
         </div>
