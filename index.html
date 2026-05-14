@@ -179,11 +179,12 @@
             </div>
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
-                <a href="#home" class="nav-link text-white">Home</a>
-                <a href="#about" class="nav-link text-white">About Our School</a>
-                <a href="#reviews" class="nav-link text-white">Reviews</a>
-                <a href="#faqs" class="nav-link text-white">FAQs</a>
-                <a href="#contact" class="nav-link text-white">Contact Us</a>
+                <a href="index.html" class="nav-link text-white">Home</a>
+                <a href="/aboutus.html" class="nav-link text-white">About Our School</a>
+                <a href="pricing.html" class="nav-link text-white">Pricing</a>
+                <a href="faqs.html" class="nav-link text-white">FAQs</a>
+                <a href="terms.html" class="nav-link text-white">Terms & Conditions</a>
+                <a href="contactus.html" class="nav-link text-white">Contact Us</a>
             </div>
             <!-- CTA Button -->
             <a href="tel:+447532749660"
@@ -559,64 +560,91 @@
 
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
             <div><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-[#F5A623] rounded-xl flex items-center justify-center"><i class="fa-solid fa-car-side text-black"></i></div><span class="text-2xl font-bold">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></div><p class="text-zinc-500">Expert driving lessons in Reading. Manual & Automatic specialists.</p></div>
-            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="#home" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="#about" class="hover:text-[#F5A623] transition">About</a></li><li><a href="#reviews" class="hover:text-[#F5A623] transition">Reviews</a></li><li><a href="#faqs" class="hover:text-[#F5A623] transition">FAQs</a></li></ul></div>
+            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="index.html" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="aboutus.html" class="hover:text-[#F5A623] transition">About</a></li><li><a href="reviews.html" class="hover:text-[#F5A623] transition">Reviews</a></li><li><a href="faqs.html" class="hover:text-[#F5A623] transition">FAQs</a></li></ul></div>
             <div><h5 class="font-bold mb-5 text-lg">Services</h5><ul class="text-zinc-400 space-y-2"><li>Manual Lessons</li><li>Automatic Lessons</li><li>Intensive Courses</li><li>Motorway / Night Driving</li></ul></div>
-            <div><h5 class="font-bold mb-5 text-lg">Connect</h5><div class="flex gap-6 text-3xl text-[#F5A623]"><i class="fa-brands fa-facebook hover:scale-110 transition"></i><i class="fa-brands fa-instagram hover:scale-110 transition"></i><i class="fa-brands fa-whatsapp hover:scale-110 transition"></i></div><p class="mt-8 text-sm text-zinc-500">© 2026 𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 . All rights reserved.</p></div>
-        </div>
+<div><h5 class="font-bold mb-5 text-lg">Connect</h5>
+    <div class="flex gap-6 text-3xl text-[#F5A623]">
+        <a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+</div>   
+
+    
+
+</div>
+
+  <!-- Centered Copyright -->
+   <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6">
+    <p class="text-sm text-zinc-500">
+        © 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.
+    </p>
+</div>
+
     </footer>
 
-    <script>
-        // Initialize Swiper for Hero + Reviews
-        const heroSwiper = new Swiper('.hero-swiper', {
-            loop: true,
-            autoplay: { delay: 5000, disableOnInteraction: false },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            effect: 'fade',
-            fadeEffect: { crossFade: true },
-        });
-       
-        const reviewSwiper = new Swiper('.review-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 25,
-            loop: true,
-            autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true },
-            speed: 4000,
-            breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            allowTouchMove: true,
-            on: { init: function () { this.el.addEventListener('mouseenter', () => this.autoplay.stop()); this.el.addEventListener('mouseleave', () => this.autoplay.start()); } }
-        });
-       
-        // Smooth scroll for nav
-        document.querySelectorAll('.nav-link').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if(href && href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if(target) target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
 
-        // Navbar hide on scroll down, show on scroll up
-        let lastScrollTop = 0;
-        const navbar = document.getElementById('navbar');
-
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scroll down - hide navbar
-                navbar.style.transform = 'translateY(-100%)';
-            } else {
-                // Scroll up - show navbar
-                navbar.style.transform = 'translateY(0)';
+   <script>
+    // Initialize Swiper for Hero + Reviews
+    const heroSwiper = new Swiper('.hero-swiper', {
+        loop: true,
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+    });
+   
+    const reviewSwiper = new Swiper('.review-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 25,
+        loop: true,
+        autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true },
+        speed: 4000,
+        breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        allowTouchMove: true,
+        on: { init: function () { this.el.addEventListener('mouseenter', () => this.autoplay.stop()); this.el.addEventListener('mouseleave', () => this.autoplay.start()); } }
+    });
+   
+    // Smooth scroll for hash links ONLY (internal page sections)
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            // Only handle hash links (starts with #)
+            if(href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if(target) target.scrollIntoView({ behavior: 'smooth' });
             }
-            
-            lastScrollTop = scrollTop;
+            // For external links like aboutus.html, pricing.html, etc.
+            // Let the browser handle them normally (no preventDefault)
         });
-    </script>
+    });
+
+    // Navbar hide on scroll down, show on scroll up
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scroll down - hide navbar
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            // Scroll up - show navbar
+            navbar.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+</script>
 </body>
 </html>
