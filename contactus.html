@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Contact Us | DriveRight Premium Driving School Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+       
+        * {
+            font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+       
+        :root {
+            --primary: #F5A623;
+            --primary-dark: #dc8e12;
+            --bg-deep: #05070A;
+            --bg-card: #11141C;
+        }
+       
+        body {
+            background: #020308;
+            color: #EFF3FC;
+            overflow-x: hidden;
+        }
+       
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(5, 7, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245, 166, 35, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+       
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+       
+        .nav-link:hover {
+            color: #F5A623;
+            transform: translateY(-2px);
+        }
+       
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #F5A623;
+            transition: width 0.3s ease;
+        }
+       
+        .nav-link:hover::after {
+            width: 100%;
+        }
+       
+        .btn-primary {
+            background: linear-gradient(135deg, #F5A623 0%, #dc8e12 100%);
+            transition: all 0.3s;
+        }
+       
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(245, 166, 35, 0.5);
+            filter: brightness(1.05);
+        }
+       
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #11141C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F5A623;
+            border-radius: 10px;
+        }
+
+        /* Contact Cards */
+        .contact-card {
+            background: linear-gradient(145deg, #0A0C12 0%, #080A0F 100%);
+            border: 1px solid rgba(245, 166, 35, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .contact-card:hover {
+            border-color: rgba(245, 166, 35, 0.5);
+            transform: translateY(-8px);
+        }
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1);
+            color: #F5A623;
+        }
+
+        /* Form Styles */
+        .form-input {
+            background: #11141C;
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #F5A623;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.2);
+        }
+
+        /* Map Container */
+        .map-container {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            transition: all 0.4s ease;
+        }
+        .map-container:hover {
+            border-color: rgba(245, 166, 35, 0.5);
+            transform: scale(1.01);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            filter: contrast(1.05) brightness(0.95);
+        }
+
+        /* Floating animation */
+        @keyframes floatSlow {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .floating-gold {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            background: linear-gradient(135deg, #F5A623, #dc8e12);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(245,166,35,0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 99;
+            cursor: pointer;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 9999;
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.12); background: #128C7E; }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .map-container iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="glass-nav sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#F5A623] to-[#dc8e12] rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-lg shadow-[#F5A623]/30 transform transition-all group-hover:scale-105">
+                    <i class="fa-solid fa-car-side text-black"></i>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-[#F5A623]">DRIVE<span class="text-white">RIGHT</span></span>
+                    <div class="text-[8px] sm:text-[10px] tracking-wider text-[#F5A623]/70">SCHOOL OF MOTORING</div>
+                </div>
+            </a>
+           <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+                <a href="index.html" class="nav-link text-white">Home</a>
+                <a href="/aboutus.html" class="nav-link text-white">About Our School</a>
+                <a href="pricing.html" class="nav-link text-white">Pricing</a>
+                <a href="faqs.html" class="nav-link text-white">FAQs</a>
+                                <a href="terms.html" class="nav-link text-white">Terms & Conditions</a>
+
+                <a href="contactus.html" class="nav-link text-white">Contact Us</a>
+            </div>
+            <a href="tel:+447532749660" class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-1 sm:gap-2 text-black shadow-lg shadow-[#F5A623]/25 text-sm sm:text-base">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span class="hidden sm:inline">+447532749660</span>
+                <span class="sm:hidden">Call</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-20 left-10 w-80 h-80 bg-[#F5A623]/10 rounded-full blur-3xl floating-gold"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-[#F5A623]/5 rounded-full blur-3xl floating-gold" style="animation-delay: 2s;"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative">
+            <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md px-5 sm:px-6 py-2 rounded-full mb-6 border border-[#F5A623]/40" data-aos="fade-down">
+                <i class="fa-regular fa-message text-[#F5A623] text-base sm:text-lg"></i>
+                <span class="text-xs sm:text-sm tracking-wide font-semibold">Get In Touch • 24/7 Support</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6" data-aos="fade-up">Contact <span class="text-[#F5A623]">Us</span></h1>
+            <p class="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Have questions? Ready to book your first lesson? We're here to help. Reach out to us anytime.</p>
+            <div class="w-20 sm:w-28 h-1 bg-gradient-to-r from-[#F5A623] to-transparent mx-auto mt-6 sm:mt-8 rounded-full"></div>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="py-12 md:py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Phone Card -->
+                <div class="contact-card p-6 md:p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="50">
+                    <div class="contact-icon w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-2xl flex items-center justify-center text-3xl text-[#F5A623] mb-5">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Call Us</h3>
+                    <p class="text-zinc-400 mb-4">Monday to Saturday, 7:30AM - 5PM</p>
+                    <a href="tel:+447532749660" class="text-2xl font-bold text-[#F5A623] hover:text-white transition">+44 7532 749660</a>
+                </div>
+
+                <!-- WhatsApp Card -->
+                <div class="contact-card p-6 md:p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-icon w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-2xl flex items-center justify-center text-3xl text-[#F5A623] mb-5">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WhatsApp</h3>
+                    <p class="text-zinc-400 mb-4">Instant messaging & quick replies</p>
+                    <a href="https://wa.me/447532749660" class="text-2xl font-bold text-[#F5A623] hover:text-white transition">+44 7532 749660</a>
+                </div>
+
+                <!-- Email Card -->
+                <div class="contact-card p-6 md:p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="150">
+                    <div class="contact-icon w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-2xl flex items-center justify-center text-3xl text-[#F5A623] mb-5">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Email Us</h3>
+                    <p class="text-zinc-400 mb-4">We'll respond within 24 hours</p>
+                    <a href="mailto:Taimurmasood3@gmail.com" class="text-xl font-semibold text-[#F5A623] hover:text-white transition break-all">Taimurmasood3@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Map Section -->
+    <section class="py-12 md:py-20 bg-[#0A0C12]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Send Us a <span class="text-[#F5A623]">Message</span></h2>
+                    <p class="text-zinc-400 mb-8">Fill out the form below and we'll get back to you as soon as possible.</p>
+                    
+                    <form id="contactForm" class="space-y-5">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-zinc-300">Full Name *</label>
+                                <input type="text" id="name" required class="form-input w-full px-5 py-3 rounded-xl text-white placeholder:text-zinc-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-zinc-300">Phone Number *</label>
+                                <input type="tel" id="phone" required class="form-input w-full px-5 py-3 rounded-xl text-white placeholder:text-zinc-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-zinc-300">Email Address *</label>
+                            <input type="email" id="email" required class="form-input w-full px-5 py-3 rounded-xl text-white placeholder:text-zinc-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-zinc-300">Subject</label>
+                            <select id="subject" class="form-input w-full px-5 py-3 rounded-xl text-white">
+                                <option value="general" class="bg-[#11141C]">General Enquiry</option>
+                                <option value="booking" class="bg-[#11141C]">Book a Lesson</option>
+                                <option value="pricing" class="bg-[#11141C]">Pricing Question</option>
+                                <option value="other" class="bg-[#11141C]">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-zinc-300">Message *</label>
+                            <textarea id="message" rows="5" required class="form-input w-full px-5 py-3 rounded-xl text-white placeholder:text-zinc-500 resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full py-4 rounded-xl text-black font-bold text-lg transition-all">
+                            <i class="fa-regular fa-paper-plane mr-2"></i> Send Message
+                        </button>
+                        <p class="text-xs text-zinc-500 text-center mt-3">We respect your privacy. Your information will never be shared.</p>
+                    </form>
+                    
+                    <!-- Success Message -->
+                    <div id="successMessage" class="hidden mt-4 p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-center">
+                        <i class="fa-regular fa-circle-check text-green-500 text-xl mr-2"></i>
+                        <span class="text-green-400">Message sent successfully! We'll contact you soon.</span>
+                    </div>
+                </div>
+
+                <!-- Map & Location Info -->
+                <div data-aos="fade-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Find <span class="text-[#F5A623]">Us</span></h2>
+                    <p class="text-zinc-400 mb-6">Visit our location or get directions using the map below.</p>
+                    
+                    <!-- Map Container -->
+                    <div class="map-container mb-6">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.488487157327!2d-0.9769435499999999!3d51.44918714999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48769b13156fc395%3A0xaac1c527ff4ba0ca!2sGarnet%20St%2C%20Reading%20RG1%206BA%2C%20UK!5e0!3m2!1sen!2s!4v1778704821770!5m2!1sen!2s" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    
+                    <!-- Address Details -->
+                    <div class="bg-[#11141C] p-6 rounded-2xl border border-[#F5A623]/10">
+                        <div class="flex items-start gap-4 mb-4">
+                            <i class="fa-solid fa-location-dot text-2xl text-[#F5A623] mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Our Location</h4>
+                                <p class="text-zinc-400">Garnet St, Reading RG1 6BA, United Kingdom</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 mb-4">
+                            <i class="fa-regular fa-clock text-2xl text-[#F5A623] mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Opening Hours</h4>
+                                <p class="text-zinc-400">Monday - Friday: 7:30 AM - 6:00 PM</p>
+                                <p class="text-zinc-400">Saturday: 8:00 AM - 4:00 PM</p>
+                                <p class="text-zinc-400">Sunday: Closed</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-car-side text-2xl text-[#F5A623] mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Service Areas</h4>
+                                <p class="text-zinc-400">Reading, Caversham, Tilehurst, Earley, Woodley, Whitley, and surrounding Berkshire areas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Hours & Quick Response Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Quick <span class="text-[#F5A623]">Response</span> Guaranteed</h2>
+                    <p class="text-zinc-400 mb-6 leading-relaxed">We understand that choosing the right driving school is an important decision. Our team is dedicated to answering all your questions promptly and helping you start your driving journey with confidence.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-regular fa-clock text-[#F5A623] text-xl"></i>
+                            <span class="text-zinc-300">Response within 24 hours for emails</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-[#F5A623] text-xl"></i>
+                            <span class="text-zinc-300">Instant replies on WhatsApp during business hours</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-[#F5A623] text-xl"></i>
+                            <span class="text-zinc-300">Call us directly for immediate assistance</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+                    <div class="bg-[#11141C] p-5 rounded-2xl text-center border border-white/5">
+                        <i class="fa-regular fa-message text-3xl text-[#F5A623] mb-2"></i>
+                        <p class="text-2xl font-bold text-[#F5A623]">24h</p>
+                        <p class="text-xs text-zinc-500">Email Response</p>
+                    </div>
+                    <div class="bg-[#11141C] p-5 rounded-2xl text-center border border-white/5">
+                        <i class="fa-regular fa-clock text-3xl text-[#F5A623] mb-2"></i>
+                        <p class="text-2xl font-bold text-[#F5A623]">7:30AM</p>
+                        <p class="text-xs text-zinc-500">Early Start</p>
+                    </div>
+                    <div class="bg-[#11141C] p-5 rounded-2xl text-center border border-white/5">
+                        <i class="fa-solid fa-calendar-check text-3xl text-[#F5A623] mb-2"></i>
+                        <p class="text-2xl font-bold text-[#F5A623]">6 Days</p>
+                        <p class="text-xs text-zinc-500">Weekly Service</p>
+                    </div>
+                    <div class="bg-[#11141C] p-5 rounded-2xl text-center border border-white/5">
+                        <i class="fa-solid fa-headset text-3xl text-[#F5A623] mb-2"></i>
+                        <p class="text-2xl font-bold text-[#F5A623]">Live</p>
+                        <p class="text-xs text-zinc-500">Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Contact Section -->
+    <section class="py-20 bg-[#0A0C12]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 bg-[#F5A623]/10 px-5 py-2 rounded-full mb-6">
+                <i class="fa-regular fa-circle-question text-[#F5A623]"></i>
+                <span class="text-sm font-semibold text-[#F5A623]">Before You Contact Us</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Frequently Asked <span class="text-[#F5A623]">Questions</span></h2>
+            <p class="text-zinc-400 mb-8 max-w-2xl mx-auto">Find quick answers to common questions. For anything else, we're just a message away!</p>
+            <div class="grid sm:grid-cols-2 gap-4 text-left">
+                <div class="bg-[#11141C] p-5 rounded-xl">
+                    <p class="font-semibold text-[#F5A623] mb-2">💷 How much are lessons?</p>
+                    <p class="text-zinc-400 text-sm">Manual: £43/hr | Auto: £45/hr. Block bookings save you more!</p>
+                </div>
+                <div class="bg-[#11141C] p-5 rounded-xl">
+                    <p class="font-semibold text-[#F5A623] mb-2">📍 Where do you cover?</p>
+                    <p class="text-zinc-400 text-sm">Reading and surrounding Berkshire areas. Free pick-up included.</p>
+                </div>
+                <div class="bg-[#11141C] p-5 rounded-xl">
+                    <p class="font-semibold text-[#F5A623] mb-2">📅 How to book a lesson?</p>
+                    <p class="text-zinc-400 text-sm">Call, WhatsApp, or email us. We'll schedule your first lesson.</p>
+                </div>
+                <div class="bg-[#11141C] p-5 rounded-xl">
+                    <p class="font-semibold text-[#F5A623] mb-2">✅ Do you help with theory test?</p>
+                    <p class="text-zinc-400 text-sm">Yes! Free theory test support for all block booking students.</p>
+                </div>
+            </div>
+            <div class="mt-8">
+                <a href="faqs.html" class="text-[#F5A623] hover:text-white transition inline-flex items-center gap-2">
+                    View All FAQs <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-[#F5A623]/10 via-[#020308] to-[#020308]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">Ready to Start Your <span class="text-[#F5A623]">Driving Journey</span>?</h2>
+            <p class="text-zinc-400 mb-6" data-aos="fade-up" data-aos-delay="100">Don't wait any longer. Contact us today and take the first step toward driving freedom.</p>
+            <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="tel:+447532749660" class="btn-primary px-8 py-4 rounded-xl text-black font-bold text-lg inline-flex items-center gap-2"><i class="fa-solid fa-phone"></i> Call Now</a>
+                <a href="https://wa.me/447532749660" class="border border-[#F5A623] px-8 py-4 rounded-xl text-[#F5A623] hover:bg-[#F5A623]/10 transition text-lg font-semibold inline-flex items-center gap-2"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+     <!-- Footer -->
+    <footer class="bg-[#05070A] py-16 border-t border-[#F5A623]/20">
+       <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <div><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-[#F5A623] rounded-xl flex items-center justify-center"><i class="fa-solid fa-car-side text-black"></i></div><span class="text-2xl font-bold">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></div><p class="text-zinc-500">Expert driving lessons in Reading. Manual & Automatic specialists.</p></div>
+            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="index.html" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="aboutus.html" class="hover:text-[#F5A623] transition">About</a></li><li><a href="reviews.html" class="hover:text-[#F5A623] transition">Reviews</a></li><li><a href="faqs.html" class="hover:text-[#F5A623] transition">FAQs</a></li></ul></div>
+            <div><h5 class="font-bold mb-5 text-lg">Services</h5><ul class="text-zinc-400 space-y-2"><li>Manual Lessons</li><li>Automatic Lessons</li><li>Intensive Courses</li><li>Motorway / Night Driving</li></ul></div>
+<div><h5 class="font-bold mb-5 text-lg">Connect</h5>
+    <div class="flex gap-6 text-3xl text-[#F5A623]">
+        <a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+</div>   
+
+    
+
+</div>
+
+  <!-- Centered Copyright -->
+   <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6">
+    <p class="text-sm text-zinc-500">
+        © 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.
+    </p>
+</div>
+    </footer>
+    <!-- Floating Elements -->
+    <a href="https://wa.me/447532749660" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <div class="back-to-top" id="backToTop"><i class="fa-solid fa-chevron-up"></i></div>
+
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 50 });
+        
+        // Back to top
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backBtn.classList.toggle('show', window.scrollY > 500); });
+        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        
+        // Navbar hide on scroll
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            let current = window.scrollY;
+            if (current > lastScroll && current > 120) navbar.style.transform = 'translateY(-100%)';
+            else navbar.style.transform = 'translateY(0)';
+            lastScroll = current;
+        });
+
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (name && phone && email && message) {
+                // Show success message
+                successMessage.classList.remove('hidden');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 5000);
+                
+                // In a real implementation, you would send this data to a server
+                console.log('Form submitted:', { name, phone, email, subject, message });
+            }
+        });
+    </script>
+</body>
+</html>

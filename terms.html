@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Terms & Conditions | DriveRight Driving School Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+       
+        * {
+            font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+       
+        :root {
+            --primary: #F5A623;
+            --primary-dark: #dc8e12;
+            --bg-deep: #05070A;
+            --bg-card: #11141C;
+            --text-light: #F0F4FA;
+        }
+       
+        body {
+            background: #020308;
+            color: #EFF3FC;
+        }
+       
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(5, 7, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245, 166, 35, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+       
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+       
+        .nav-link:hover {
+            color: #F5A623;
+            transform: translateY(-2px);
+        }
+       
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #F5A623;
+            transition: width 0.3s ease;
+        }
+       
+        .nav-link:hover::after {
+            width: 100%;
+        }
+       
+        .btn-primary {
+            background: #F5A623;
+            transition: all 0.3s;
+        }
+       
+        .btn-primary:hover {
+            background: #ffb84d;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(245, 166, 35, 0.4);
+        }
+       
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #11141C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F5A623;
+            border-radius: 10px;
+        }
+
+        /* Terms card styling */
+        .terms-card {
+            background: #0A0C12;
+            border: 1px solid rgba(245, 166, 35, 0.15);
+            transition: all 0.4s ease;
+        }
+        .terms-card:hover {
+            border-color: rgba(245, 166, 35, 0.4);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+        }
+
+        .section-icon {
+            background: linear-gradient(135deg, rgba(245,166,35,0.15) 0%, rgba(220,142,18,0.05) 100%);
+            transition: all 0.3s ease;
+        }
+        .terms-card:hover .section-icon {
+            transform: scale(1.05);
+            background: rgba(245,166,35,0.25);
+            color: #F5A623;
+        }
+
+        .list-bullet {
+            position: relative;
+            padding-left: 1.75rem;
+        }
+        .list-bullet::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #F5A623;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .list-bullet:hover::before {
+            transform: translateX(4px);
+        }
+
+        /* Floating back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: #F5A623;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(245,166,35,0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            cursor: pointer;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: #ffb84d;
+        }
+
+        /* Floating WhatsApp (already existing, keep consistent) */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 9999;
+            animation: pulse 2s infinite;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Animated border effect on hover for cards */
+        @keyframes subtleGlow {
+            0% { border-color: rgba(245,166,35,0.2); }
+            100% { border-color: rgba(245,166,35,0.5); }
+        }
+    </style>
+</head>
+<body class="bg-[#020308] text-zinc-200">
+
+    <!-- Enhanced Navbar (identical to main site) -->
+    <nav id="navbar" class="glass-nav sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#F5A623] to-[#dc8e12] rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-[#F5A623]/30 transform transition-all group-hover:scale-105">
+                    <i class="fa-solid fa-car-side text-black"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight text-[#F5A623]">DRIVE<span class="text-white">RIGHT</span></span>
+                    <div class="text-[10px] tracking-wider text-[#F5A623]/70">SCHOOL OF MOTORING</div>
+                </div>
+            </a>
+            <!-- Desktop Menu -->
+           <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+                <a href="index.html" class="nav-link text-white">Home</a>
+                <a href="/aboutus.html" class="nav-link text-white">About Our School</a>
+                <a href="pricing.html" class="nav-link text-white">Pricing</a>
+                <a href="faqs.html" class="nav-link text-white">FAQs</a>
+                <a href="terms.html" class="nav-link text-white">Terms & Conditions</a>
+                <a href="contactus.html" class="nav-link text-white">Contact Us</a>
+            </div>
+            <!-- CTA Button -->
+            <a href="tel:+447532749660"
+               class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-5 py-2.5 rounded-full font-bold flex items-center gap-2 text-black shadow-lg shadow-[#F5A623]/25">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span>+447532749660</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section for Terms -->
+    <section class="relative py-24 bg-gradient-to-b from-[#05070A] to-[#0A0C12] overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-[#F5A623]/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-[#F5A623]/5 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-2">
+            <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm px-5 py-2 rounded-full mb-6 border border-[#F5A623]/30">
+                <i class="fa-solid fa-scale-balanced text-[#F5A623]"></i>
+                <span class="text-sm tracking-wide font-semibold">Legal Agreement</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">Terms & <span class="text-[#F5A623]">Conditions</span></h1>
+            <p class="text-xl text-zinc-400 max-w-3xl mx-auto">Last updated: March 2026 | Please read carefully before booking your driving lessons.</p>
+            <div class="w-24 h-1 bg-[#F5A623] mx-auto mt-8 rounded-full"></div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5A623]/50 to-transparent"></div>
+    </section>
+
+    <!-- Terms Main Content - Accordion Style / Elegant Cards -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="space-y-6">
+                <!-- 1. General Agreement -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5 flex-wrap md:flex-nowrap">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4 flex items-center gap-2">1. General Agreement</h2>
+                            <p class="text-zinc-300 leading-relaxed">By enrolling in and attending <span class="text-[#F5A623] font-semibold">DRIVERIGHT Driving School</span> (formerly SJ Driving School), the student agrees to the following terms and conditions. These terms constitute a legal agreement between the school and the student and are subject to change at the school’s discretion. It is the responsibility of the student to review these terms regularly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Eligibility -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-id-card"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">2. Eligibility</h2>
+                            <ul class="space-y-3 text-zinc-300">
+                                <li class="list-bullet">Students must provide valid identification and any required permits/licenses before commencing any driving lessons.</li>
+                                <li class="list-bullet">Students must meet the legal requirements for age, health, and vision standards as stipulated by local laws governing driver training.</li>
+                                <li class="list-bullet">The school reserves the right to refuse service if the student does not meet these requirements.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Payment Policy -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-credit-card"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">3. Payment Policy</h2>
+                            <ul class="space-y-3 text-zinc-300">
+                                <li class="list-bullet">All lessons and course fees must be paid in advance, unless otherwise agreed upon in writing.</li>
+                                <li class="list-bullet">Payment can be made via credit card, debit card, bank transfer, or other approved methods.</li>
+                                <li class="list-bullet">Any packages purchased must be used within the stated validity period (e.g., within 6 months of purchase). Unused lessons after this period may not be refunded.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Cancellation and Rescheduling Policy -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-calendar-xmark"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">4. Cancellation & Rescheduling</h2>
+                            <div class="space-y-3 text-zinc-300">
+                                <p><span class="text-[#F5A623] font-semibold">Notice Period:</span> Students must provide at least 48 hours’ notice to cancel or reschedule a lesson. Failure to do so will result in the full price of the lesson being charged.</p>
+                                <p><span class="text-[#F5A623] font-semibold">Late Cancellations:</span> If a cancellation is made within the 48-hour window, the student will be charged the full fee for the lesson.</p>
+                                <p><span class="text-[#F5A623] font-semibold">No Shows:</span> If the student fails to attend a lesson without prior notice, they will be charged for the full price of the missed lesson.</p>
+                                <p><span class="text-[#F5A623] font-semibold">School Cancellations:</span> In the event the school or instructor cancels, students will be offered a reschedule at no additional cost.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Personal Hygiene and Conduct -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-hand-sparkles"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">5. Personal Hygiene & Conduct</h2>
+                            <ul class="space-y-3 text-zinc-300">
+                                <li class="list-bullet"><span class="font-semibold text-white">Hygiene:</span> Students must maintain appropriate personal hygiene and wear suitable attire for driving lessons.</li>
+                                <li class="list-bullet"><span class="font-semibold text-white">Inappropriate Conduct:</span> The school reserves the right to cancel or terminate a lesson if the student is deemed unfit due to illness, poor hygiene, intoxication, or misconduct. Full fee will be charged.</li>
+                                <li class="list-bullet"><span class="font-semibold text-white">Health & Safety:</span> Students must inform the instructor of any medical conditions affecting driving ability. Lessons may be postponed if safety is compromised.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Refund Policy -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">6. Refund Policy</h2>
+                            <ul class="space-y-3 text-zinc-300">
+                                <li class="list-bullet">Refunds for <span class="font-semibold">unused lessons</span> are available if cancellation is requested in writing at least 7 days before the course start. An admin fee may apply.</li>
+                                <li class="list-bullet">No refunds once lessons or courses have begun, except in verified medical emergencies preventing continuation.</li>
+                                <li class="list-bullet">Unused lessons beyond the validity period (e.g., 6 months) will not be refunded or rescheduled.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Instructor and Vehicle Allocation -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">7. Instructor & Vehicle Allocation</h2>
+                            <p class="text-zinc-300">While we strive for consistency, the same instructor or vehicle cannot be guaranteed due to scheduling constraints. The school reserves the right to change instructors/vehicles if necessary, with advance notice wherever possible.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Student Responsibilities -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">8. Student Responsibilities</h2>
+                            <ul class="space-y-3 text-zinc-300">
+                                <li class="list-bullet">Bring a valid learner’s permit or driving license to each lesson. Failure results in cancellation & full fee charged.</li>
+                                <li class="list-bullet">Be punctual. If late, lesson time may be shortened. More than 15 minutes late may result in cancellation and full charge.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Liability -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-gavel"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">9. Liability</h2>
+                            <p class="text-zinc-300">The school provides fully insured vehicles for lessons. However, the school is not liable for any damage, injury, or loss caused by the student’s negligent actions during or outside lesson times. The school is not responsible for fines/penalties incurred by the student outside of lessons.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Practical Driving Test -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">10. Practical Driving Test</h2>
+                            <p class="text-zinc-300">The school does not guarantee passing the driving test, as it depends on individual performance. We can assist in booking tests but are not responsible for delays or cancellations by the licensing authority.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Privacy Policy -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">11. Privacy Policy</h2>
+                            <p class="text-zinc-300">The school respects student privacy. Any personal data collected during registration or lessons will be kept confidential and used solely for operational purposes, never shared with third parties without consent.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. Amendments -->
+                <div class="terms-card rounded-2xl p-6 md:p-8 transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="section-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-[#F5A623] shrink-0">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4">12. Amendments</h2>
+                            <p class="text-zinc-300">We reserve the right to amend these terms at any time. Changes will be communicated to students as necessary, and continued enrollment implies acceptance of updated terms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Important Notice Block -->
+            <div class="mt-16 p-6 md:p-8 rounded-3xl bg-gradient-to-r from-[#F5A623]/5 to-transparent border border-[#F5A623]/20 text-center">
+                <i class="fa-regular fa-circle-check text-4xl text-[#F5A623] mb-3 inline-block"></i>
+                <p class="text-zinc-200 text-lg font-medium">By booking a lesson with DRIVERIGHT, you confirm that you have read, understood, and agreed to all the above Terms & Conditions.</p>
+                <div class="flex flex-wrap justify-center gap-4 mt-6">
+                    <a href="index.html#contact" class="btn-primary px-6 py-3 rounded-xl text-black font-bold inline-flex items-center gap-2"><i class="fa-solid fa-calendar-check"></i> Book Your Lesson</a>
+                    <a href="index.html" class="border border-[#F5A623] px-6 py-3 rounded-xl text-[#F5A623] hover:bg-[#F5A623]/10 transition font-medium"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (matching main site style) -->
+     <!-- Footer -->
+    <footer class="bg-[#05070A] py-16 border-t border-[#F5A623]/20">
+       <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <div><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-[#F5A623] rounded-xl flex items-center justify-center"><i class="fa-solid fa-car-side text-black"></i></div><span class="text-2xl font-bold">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></div><p class="text-zinc-500">Expert driving lessons in Reading. Manual & Automatic specialists.</p></div>
+            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="index.html" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="aboutus.html" class="hover:text-[#F5A623] transition">About</a></li><li><a href="reviews.html" class="hover:text-[#F5A623] transition">Reviews</a></li><li><a href="faqs.html" class="hover:text-[#F5A623] transition">FAQs</a></li></ul></div>
+            <div><h5 class="font-bold mb-5 text-lg">Services</h5><ul class="text-zinc-400 space-y-2"><li>Manual Lessons</li><li>Automatic Lessons</li><li>Intensive Courses</li><li>Motorway / Night Driving</li></ul></div>
+<div><h5 class="font-bold mb-5 text-lg">Connect</h5>
+    <div class="flex gap-6 text-3xl text-[#F5A623]">
+        <a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+</div>   
+
+    
+
+</div>
+
+  <!-- Centered Copyright -->
+   <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6">
+    <p class="text-sm text-zinc-500">
+        © 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.
+    </p>
+</div>
+    </footer>
+
+    <!-- Floating WhatsApp Button (consistent) -->
+    <a href="https://wa.me/447532749660" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to top button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fa-solid fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Back to top functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for navbar links pointing to index sections (if user clicks from terms page, but they go to index.html? Actually we keep them as index.html#id)
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.includes('#') && href !== '#') {
+                    e.preventDefault();
+                    // Since we are on terms page, we need to redirect to index with section
+                    if (href.startsWith('index.html#')) {
+                        window.location.href = href;
+                    } else if (href.startsWith('#')) {
+                        // if on index, but we are on terms, better go to index page
+                        window.location.href = 'index.html' + href;
+                    }
+                }
+            });
+        });
+
+        // Navbar hide on scroll down / show up (consistent)
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            let currentScroll = window.scrollY;
+            if (currentScroll > lastScroll && currentScroll > 120) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>

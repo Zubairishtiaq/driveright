@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Pricing | DriveRight Premium Driving School Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+       
+        * {
+            font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+       
+        :root {
+            --primary: #F5A623;
+            --primary-dark: #dc8e12;
+            --bg-deep: #05070A;
+            --bg-card: #11141C;
+        }
+       
+        body {
+            background: #020308;
+            color: #EFF3FC;
+            overflow-x: hidden;
+        }
+       
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(5, 7, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245, 166, 35, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+       
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+       
+        .nav-link:hover {
+            color: #F5A623;
+            transform: translateY(-2px);
+        }
+       
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #F5A623;
+            transition: width 0.3s ease;
+        }
+       
+        .nav-link:hover::after {
+            width: 100%;
+        }
+       
+        .btn-primary {
+            background: linear-gradient(135deg, #F5A623 0%, #dc8e12 100%);
+            transition: all 0.3s;
+        }
+       
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(245, 166, 35, 0.5);
+            filter: brightness(1.05);
+        }
+       
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #11141C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F5A623;
+            border-radius: 10px;
+        }
+
+        /* Pricing Cards Premium */
+        .pricing-card {
+            background: linear-gradient(145deg, #0A0C12 0%, #080A0F 100%);
+            border: 1px solid rgba(245, 166, 35, 0.15);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245,166,35,0.06), transparent);
+            transition: left 0.7s ease;
+        }
+        .pricing-card:hover::before {
+            left: 100%;
+        }
+        .pricing-card:hover {
+            border-color: rgba(245, 166, 35, 0.5);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 50px -20px rgba(0,0,0,0.8);
+        }
+
+        .price-badge {
+            background: linear-gradient(135deg, rgba(245,166,35,0.2), rgba(220,142,18,0.1));
+            border: 1px solid rgba(245,166,35,0.3);
+        }
+
+        .save-tag {
+            background: #F5A623;
+            color: #000;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Floating animation */
+        @keyframes floatSlow {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .floating-gold {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+
+        /* Comparison table row hover */
+        .comparison-row {
+            transition: all 0.2s ease;
+        }
+        .comparison-row:hover {
+            background: rgba(245, 166, 35, 0.08);
+            transform: scale(1.01);
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            background: linear-gradient(135deg, #F5A623, #dc8e12);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(245,166,35,0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 99;
+            cursor: pointer;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 9999;
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.12); background: #128C7E; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .btn-outline-light {
+            border: 1.5px solid rgba(245,166,35,0.5);
+            transition: all 0.3s;
+        }
+        .btn-outline-light:hover {
+            background: rgba(245,166,35,0.15);
+            border-color: #F5A623;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="glass-nav sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#F5A623] to-[#dc8e12] rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-[#F5A623]/30 transform transition-all group-hover:scale-105">
+                    <i class="fa-solid fa-car-side text-black"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight text-[#F5A623]">DRIVE<span class="text-white">RIGHT</span></span>
+                    <div class="text-[10px] tracking-wider text-[#F5A623]/70">SCHOOL OF MOTORING</div>
+                </div>
+            </a>
+          <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+                <a href="index.html" class="nav-link text-white">Home</a>
+                <a href="/aboutus.html" class="nav-link text-white">About Our School</a>
+                <a href="pricing.html" class="nav-link text-white">Pricing</a>
+                <a href="faqs.html" class="nav-link text-white">FAQs</a>
+                                <a href="terms.html" class="nav-link text-white">Terms & Conditions</a>
+
+                <a href="contactus.html" class="nav-link text-white">Contact Us</a>
+            </div>
+            <a href="tel:+447532749660" class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-5 py-2.5 rounded-full font-bold flex items-center gap-2 text-black shadow-lg shadow-[#F5A623]/25">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span class="hidden sm:inline">+447532749660</span>
+                <span class="sm:hidden">Call</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-20 left-10 w-80 h-80 bg-[#F5A623]/10 rounded-full blur-3xl floating-gold"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-[#F5A623]/5 rounded-full blur-3xl floating-gold" style="animation-delay: 2s;"></div>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 text-center relative">
+            <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md px-6 py-2.5 rounded-full mb-6 border border-[#F5A623]/40" data-aos="fade-down">
+                <i class="fa-solid fa-tag text-[#F5A623] text-lg"></i>
+                <span class="text-sm tracking-wide font-semibold">Transparent Pricing • No Hidden Fees</span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-6" data-aos="fade-up">Simple & <span class="text-[#F5A623]">Fair</span> Prices</h1>
+            <p class="text-xl text-zinc-400 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">Choose from manual or automatic lessons. Block bookings save you more — pay less per hour and master the road with confidence.</p>
+            <div class="w-28 h-1 bg-gradient-to-r from-[#F5A623] to-transparent mx-auto mt-8 rounded-full"></div>
+        </div>
+    </section>
+
+    <!-- MAIN PRICING CARDS: Manual & Automatic -->
+    <section class="py-12 md:py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10 lg:gap-12">
+                
+                <!-- MANUAL CARD -->
+                <div class="pricing-card rounded-3xl p-8 md:p-10" data-aos="fade-right" data-aos-delay="100">
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-3xl flex items-center justify-center text-4xl text-[#F5A623] mb-5 border border-[#F5A623]/30">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold">Manual <span class="text-[#F5A623]">Lessons</span></h2>
+                        <p class="text-zinc-500 mt-2">Full control · DVSA qualified instructors</p>
+                    </div>
+                    
+                    <!-- Single Lesson -->
+                    <div class="flex justify-between items-center py-4 border-b border-white/10">
+                        <div><span class="text-xl font-semibold">Single Lesson</span><p class="text-sm text-zinc-500">1 hour · Pay as you go</p></div>
+                        <div class="text-right"><span class="text-3xl font-bold text-white">£43</span><span class="text-zinc-400"> /hour</span></div>
+                    </div>
+                    
+                    <!-- 6 Hours Block -->
+                    <div class="flex justify-between items-center py-4 border-b border-white/10 group hover:bg-white/5 transition-all px-2 -mx-2 rounded-xl">
+                        <div><span class="text-xl font-semibold">6 Hours Block</span><p class="text-sm text-zinc-500">Save £18</p></div>
+                        <div class="text-right"><span class="text-3xl font-bold text-[#F5A623]">£240</span><span class="text-zinc-400"> <span class="line-through text-zinc-600">£258</span></span></div>
+                    </div>
+                    
+                    <!-- 10 Hours Block -->
+                    <div class="flex justify-between items-center py-4 border-b border-white/10 group hover:bg-white/5 transition-all px-2 -mx-2 rounded-xl">
+                        <div><span class="text-xl font-semibold">10 Hours Block</span><p class="text-sm text-zinc-500">Save £30 · Best Value</p><span class="save-tag inline-block mt-1">⭐ MOST POPULAR</span></div>
+                        <div class="text-right"><span class="text-3xl font-bold text-[#F5A623]">£400</span><span class="text-zinc-400"> <span class="line-through text-zinc-600">£430</span></span></div>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <a href="#contact-booking" class="btn-primary w-full inline-block text-center py-4 rounded-xl font-bold text-black"><i class="fa-solid fa-calendar-check mr-2"></i> Book Manual Lessons</a>
+                        <p class="text-xs text-zinc-500 mt-3">✔️ Flexible scheduling ✔️ Pick-up & drop-off included</p>
+                    </div>
+                </div>
+                
+                <!-- AUTOMATIC CARD -->
+                <div class="pricing-card rounded-3xl p-8 md:p-10 border-t-4 border-t-[#F5A623]" data-aos="fade-left" data-aos-delay="150">
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-3xl flex items-center justify-center text-4xl text-[#F5A623] mb-5 border border-[#F5A623]/30">
+                            <i class="fa-solid fa-car"></i>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold">Automatic <span class="text-[#F5A623]">Lessons</span></h2>
+                        <p class="text-zinc-500 mt-2">Smooth & effortless · Modern automatic fleet</p>
+                    </div>
+                    
+                    <!-- Single Lesson -->
+                    <div class="flex justify-between items-center py-4 border-b border-white/10">
+                        <div><span class="text-xl font-semibold">Single Lesson</span><p class="text-sm text-zinc-500">1 hour · Pay as you go</p></div>
+                        <div class="text-right"><span class="text-3xl font-bold text-white">£45</span><span class="text-zinc-400"> /hour</span></div>
+                    </div>
+                    
+                    <!-- 6 Hours Block -->
+                    <div class="flex justify-between items-center py-4 border-b border-white/10 group hover:bg-white/5 transition-all px-2 -mx-2 rounded-xl">
+                        <div><span class="text-xl font-semibold">6 Hours Block</span><p class="text-sm text-zinc-500">Save £10</p></div>
+                        <div class="text-right"><span class="text-3xl font-bold text-[#F5A623]">£260</span><span class="text-zinc-400"> <span class="line-through text-zinc-600">£270</span></span></div>
+                    </div>
+                    
+                    <!-- 10 Hours Block -->
+                    <div class="flex justify-between items-center py-4 border-b border-white/10 group hover:bg-white/5 transition-all px-2 -mx-2 rounded-xl">
+                        <div><span class="text-xl font-semibold">10 Hours Block</span><p class="text-sm text-zinc-500">Save £20 · Great for intensive learning</p><span class="save-tag inline-block mt-1">🔥 BEST DEAL</span></div>
+                        <div class="text-right"><span class="text-3xl font-bold text-[#F5A623]">£430</span><span class="text-zinc-400"> <span class="line-through text-zinc-600">£450</span></span></div>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <a href="#contact-booking" class="btn-primary w-full inline-block text-center py-4 rounded-xl font-bold text-black"><i class="fa-solid fa-calendar-check mr-2"></i> Book Automatic Lessons</a>
+                        <p class="text-xs text-zinc-500 mt-3">✔️ Dual controls ✔️ Free theory test support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE & SAVINGS HIGHLIGHT -->
+    <section class="py-16 bg-[#0A0C12]">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Compare & <span class="text-[#F5A623]">Save</span></h2>
+                <p class="text-zinc-400 text-lg">Block booking discounts make learning more affordable. See how much you save.</p>
+                <div class="w-20 h-1 bg-[#F5A623] mx-auto mt-4 rounded-full"></div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-[#F5A623]/30">
+                            <th class="py-5 px-4 text-lg font-bold">Package Type</th>
+                            <th class="py-5 px-4 text-lg font-bold">Manual Price</th>
+                            <th class="py-5 px-4 text-lg font-bold">Automatic Price</th>
+                            <th class="py-5 px-4 text-lg font-bold text-[#F5A623]">You Save</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="comparison-row border-b border-white/10">
+                            <td class="py-4 px-4 font-semibold">Single Hour</td>
+                            <td class="py-4 px-4">£43</td>
+                            <td class="py-4 px-4">£45</td>
+                            <td class="py-4 px-4 text-green-400">-</td>
+                        </tr>
+                        <tr class="comparison-row border-b border-white/10">
+                            <td class="py-4 px-4 font-semibold">6-Hour Block</td>
+                            <td class="py-4 px-4">£240 <span class="text-zinc-500 text-sm line-through ml-2">£258</span></td>
+                            <td class="py-4 px-4">£260 <span class="text-zinc-500 text-sm line-through ml-2">£270</span></td>
+                            <td class="py-4 px-4 text-[#F5A623] font-bold">Up to £18 / £10</td>
+                        </tr>
+                        <tr class="comparison-row bg-[#F5A623]/5 rounded-xl">
+                            <td class="py-5 px-4 font-semibold text-[#F5A623]">10-Hour Block <span class="badge text-xs bg-[#F5A623]/20 px-2 py-1 rounded-full ml-2">Best Value</span></td>
+                            <td class="py-5 px-4 font-bold">£400 <span class="text-zinc-500 text-sm line-through ml-2">£430</span></td>
+                            <td class="py-5 px-4 font-bold">£430 <span class="text-zinc-500 text-sm line-through ml-2">£450</span></td>
+                            <td class="py-5 px-4 text-[#F5A623] font-bold text-lg">Save £30 / £20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-12 p-6 bg-gradient-to-r from-[#F5A623]/10 to-transparent rounded-2xl border border-[#F5A623]/20 text-center" data-aos="zoom-in">
+                <i class="fa-solid fa-gem text-[#F5A623] text-3xl mb-3 inline-block"></i>
+                <p class="text-zinc-200">✨ <span class="font-bold">Premium package available:</span> 20 hours bundle for only £760 (Manual) / £820 (Auto) — contact us for custom intensive courses.</p>
+                <a href="tel:+447532749660" class="inline-block mt-3 text-[#F5A623] hover:text-white transition"><i class="fa-solid fa-phone"></i> Speak with an advisor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US + BONUS INFO -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-[#11141C] p-7 rounded-2xl text-center border border-white/5 hover:border-[#F5A623]/40 transition-all" data-aos="fade-up">
+                    <i class="fa-regular fa-clock text-5xl text-[#F5A623] mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Flexible Schedule</h3>
+                    <p class="text-zinc-400">Lessons from 7:30AM – 5PM, Monday to Saturday. Weekend slots available.</p>
+                </div>
+                <div class="bg-[#11141C] p-7 rounded-2xl text-center border border-white/5 hover:border-[#F5A623]/40 transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-chalkboard-user text-5xl text-[#F5A623] mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">DVSA Approved</h3>
+                    <p class="text-zinc-400">Fully qualified instructors with years of experience and high pass rates.</p>
+                </div>
+                <div class="bg-[#11141C] p-7 rounded-2xl text-center border border-white/5 hover:border-[#F5A623]/40 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-car-side text-5xl text-[#F5A623] mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Modern Fleet</h3>
+                    <p class="text-zinc-400">Brand new dual-control cars with climate control & safety features.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / CTA SECTION (for bookings) -->
+    <section id="contact-booking" class="py-24 bg-gradient-to-br from-[#F5A623]/5 via-[#020308] to-[#020308]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex bg-[#F5A623]/20 rounded-full px-6 py-2 mb-6"><i class="fa-solid fa-phone-volume text-[#F5A623] mr-2"></i> Secure your spot today</div>
+            <h2 class="text-5xl md:text-6xl font-bold mb-6">Ready to start your journey?</h2>
+            <p class="text-xl text-zinc-300 mb-10">Choose your lesson type, block booking, and let's get you on the road to success.</p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="tel:+447532749660" class="flex-1 max-w-sm bg-[#F5A623] text-black py-5 rounded-2xl font-bold text-2xl flex items-center justify-center gap-4 hover:scale-105 transition shadow-xl"><i class="fa-solid fa-phone text-3xl"></i> Call Now</a>
+                <a href="https://wa.me/447532749660" class="flex-1 max-w-sm border-2 border-[#F5A623] py-5 rounded-2xl font-bold text-2xl hover:bg-[#F5A623] hover:text-black transition flex items-center justify-center gap-4"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <p class="mt-6 text-zinc-500">✉️ Taimurmasood3@gmail.com | 📍 Reading, UK</p>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer class="bg-[#05070A] py-16 border-t border-[#F5A623]/20">
+       <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <div><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-[#F5A623] rounded-xl flex items-center justify-center"><i class="fa-solid fa-car-side text-black"></i></div><span class="text-2xl font-bold">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></div><p class="text-zinc-500">Expert driving lessons in Reading. Manual & Automatic specialists.</p></div>
+            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="index.html" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="aboutus.html" class="hover:text-[#F5A623] transition">About</a></li><li><a href="reviews.html" class="hover:text-[#F5A623] transition">Reviews</a></li><li><a href="faqs.html" class="hover:text-[#F5A623] transition">FAQs</a></li></ul></div>
+            <div><h5 class="font-bold mb-5 text-lg">Services</h5><ul class="text-zinc-400 space-y-2"><li>Manual Lessons</li><li>Automatic Lessons</li><li>Intensive Courses</li><li>Motorway / Night Driving</li></ul></div>
+<div><h5 class="font-bold mb-5 text-lg">Connect</h5>
+    <div class="flex gap-6 text-3xl text-[#F5A623]">
+        <a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+</div>   
+
+    
+
+</div>
+
+  <!-- Centered Copyright -->
+   <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6">
+    <p class="text-sm text-zinc-500">
+        © 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.
+    </p>
+</div>
+    </footer>
+    <!-- Floating Elements -->
+    <a href="https://wa.me/447532749660" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <div class="back-to-top" id="backToTop"><i class="fa-solid fa-chevron-up"></i></div>
+
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 50 });
+        // Back to top
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backBtn.classList.toggle('show', window.scrollY > 500); });
+        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        // Navbar hide on scroll
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            let current = window.scrollY;
+            if (current > lastScroll && current > 120) navbar.style.transform = 'translateY(-100%)';
+            else navbar.style.transform = 'translateY(0)';
+            lastScroll = current;
+        });
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href !== "#" && href !== "#contact-booking") return;
+                if(href === "#contact-booking") {
+                    e.preventDefault();
+                    document.getElementById('contact-booking')?.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

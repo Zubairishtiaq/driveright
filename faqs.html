@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>FAQs | DriveRight Premium Driving School Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+       
+        * {
+            font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+       
+        :root {
+            --primary: #F5A623;
+            --primary-dark: #dc8e12;
+            --bg-deep: #05070A;
+            --bg-card: #11141C;
+        }
+       
+        body {
+            background: #020308;
+            color: #EFF3FC;
+            overflow-x: hidden;
+        }
+       
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(5, 7, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245, 166, 35, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+       
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+       
+        .nav-link:hover {
+            color: #F5A623;
+            transform: translateY(-2px);
+        }
+       
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #F5A623;
+            transition: width 0.3s ease;
+        }
+       
+        .nav-link:hover::after {
+            width: 100%;
+        }
+       
+        .btn-primary {
+            background: linear-gradient(135deg, #F5A623 0%, #dc8e12 100%);
+            transition: all 0.3s;
+        }
+       
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(245, 166, 35, 0.5);
+            filter: brightness(1.05);
+        }
+       
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #11141C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F5A623;
+            border-radius: 10px;
+        }
+
+        /* FAQ Accordion Styles - Grid Layout */
+        .faqs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+        
+        @media (min-width: 768px) {
+            .faqs-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+        
+        .faq-item {
+            background: linear-gradient(145deg, #0A0C12 0%, #080A0F 100%);
+            border: 1px solid rgba(245, 166, 35, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            overflow: hidden;
+            height: fit-content;
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(245, 166, 35, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(245, 166, 35, 0.05);
+        }
+        
+        .faq-icon {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* CRITICAL FIX: Answer panel - properly hidden when closed, fully visible when open */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0 1.5rem;
+        }
+        
+        /* When active, set max-height to a large enough value to show all content */
+        .faq-item.active .faq-answer {
+            max-height: 500px;  /* Large enough to accommodate any answer content */
+            padding-bottom: 1.5rem;
+        }
+        
+        /* Inner content padding control */
+        .faq-answer .answer-inner {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+            .faq-item {
+                border-radius: 16px;
+            }
+            .faq-answer p {
+                font-size: 0.875rem;
+            }
+            .faq-answer {
+                padding: 0 1rem;
+            }
+            .faq-item.active .faq-answer {
+                padding-bottom: 1rem;
+            }
+        }
+
+        /* Floating animation */
+        @keyframes floatSlow {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        .floating-gold {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            background: linear-gradient(135deg, #F5A623, #dc8e12);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(245,166,35,0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 99;
+            cursor: pointer;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 9999;
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover { transform: scale(1.12); background: #128C7E; }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="glass-nav sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#F5A623] to-[#dc8e12] rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-lg shadow-[#F5A623]/30 transform transition-all group-hover:scale-105">
+                    <i class="fa-solid fa-car-side text-black"></i>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-[#F5A623]">DRIVE<span class="text-white">RIGHT</span></span>
+                    <div class="text-[8px] sm:text-[10px] tracking-wider text-[#F5A623]/70">SCHOOL OF MOTORING</div>
+                </div>
+            </a>
+          <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+                <a href="index.html" class="nav-link text-white">Home</a>
+                <a href="/aboutus.html" class="nav-link text-white">About Our School</a>
+                <a href="pricing.html" class="nav-link text-white">Pricing</a>
+                <a href="faqs.html" class="nav-link text-white">FAQs</a>
+                                <a href="terms.html" class="nav-link text-white">Terms & Conditions</a>
+
+                <a href="contactus.html" class="nav-link text-white">Contact Us</a>
+            </div>
+            <a href="tel:+447532749660" class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-1 sm:gap-2 text-black shadow-lg shadow-[#F5A623]/25 text-sm sm:text-base">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span class="hidden sm:inline">+447532749660</span>
+                <span class="sm:hidden">Call</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 sm:py-24 md:py-28 overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-20 left-10 w-80 h-80 bg-[#F5A623]/10 rounded-full blur-3xl floating-gold"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-[#F5A623]/5 rounded-full blur-3xl floating-gold" style="animation-delay: 2s;"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative">
+            <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md px-5 sm:px-6 py-2 rounded-full mb-6 border border-[#F5A623]/40" data-aos="fade-down">
+                <i class="fa-regular fa-circle-question text-[#F5A623] text-base sm:text-lg"></i>
+                <span class="text-xs sm:text-sm tracking-wide font-semibold">Got Questions? We've Got Answers</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6" data-aos="fade-up">Frequently Asked <span class="text-[#F5A623]">Questions</span></h1>
+            <p class="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Everything you need to know about learning to drive with DRIVERIGHT. Click on any question to reveal the answer.</p>
+            <div class="w-20 sm:w-28 h-1 bg-gradient-to-r from-[#F5A623] to-transparent mx-auto mt-6 sm:mt-8 rounded-full"></div>
+        </div>
+    </section>
+
+    <!-- FAQ Grid Section - 2 Columns, First FAQ open by default, only one open at a time, answers fully hidden when closed -->
+    <section class="py-12 sm:py-16 pb-20 sm:pb-28">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="faqs-grid" id="faqContainer">
+                
+                <!-- FAQ 1 - ACTIVE/OPEN by default (full answer visible) -->
+                <div class="faq-item active" data-aos="fade-up">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">How much do driving lessons cost?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">Manual lessons: <span class="text-[#F5A623] font-semibold">£43 per hour</span>. Automatic lessons: <span class="text-[#F5A623] font-semibold">£45 per hour</span>. Save more with block bookings: 6-hour block (£240 manual / £260 automatic) or 10-hour block (£400 manual / £430 automatic). All prices include pick-up and drop-off within Reading area.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 - CLOSED (fully hidden) -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="50">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">How long does it take to learn to drive?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">Most learners need between <span class="text-[#F5A623] font-semibold">25-45 hours</span> of professional lessons plus private practice. The exact time depends on your learning pace, consistency, and natural ability. We'll create a personalized plan for you and track your progress.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">What's the difference between manual and automatic?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">Manual lessons teach you clutch control and gear changes — giving you a <span class="text-[#F5A623] font-semibold">full license</span> to drive both manual and automatic cars. Automatic lessons focus on easier driving without clutch/gears, perfect for those who prefer simplicity or have mobility concerns.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">What is your cancellation policy?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">We require <span class="text-[#F5A623] font-semibold">at least 48 hours' notice</span> for cancellations or rescheduling. Cancellations made within 48 hours will be charged the full lesson fee. No-shows are also charged 100%. If we need to cancel, we'll reschedule at no extra cost.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">What areas do you cover for pick-up?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">We primarily serve <span class="text-[#F5A623] font-semibold">Reading and surrounding Berkshire areas</span> including Caversham, Tilehurst, Earley, Woodley, Whitley, and nearby villages. Pick-up from your home, school, or workplace is included in the lesson price.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">Do you offer intensive driving courses?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">Yes! We offer <span class="text-[#F5A623] font-semibold">one-week intensive courses</span> designed to fast-track your learning. Perfect for those who need to pass quickly. Contact us to discuss availability and create a custom intensive schedule that fits your needs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">What is your first-time pass rate?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">Our first-time pass rate is <span class="text-[#F5A623] font-semibold">consistently above the national average</span>. While we can't guarantee a pass (it depends on your performance on the day), our structured teaching methods and experienced instructors give you the best possible chance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 8 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="350">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">Do you help with booking the practical test?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">Yes, we can assist you in booking your practical test. We also offer help finding <span class="text-[#F5A623] font-semibold">test cancellations</span> to get an earlier date. However, we are not responsible for delays or cancellations caused by the DVSA.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 9 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">Do you provide theory test support?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">Absolutely! All block booking students receive <span class="text-[#F5A623] font-semibold">free theory test support</span> including revision materials, mock tests, and expert guidance. We want you to be fully prepared before taking your practical lessons.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 10 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="450">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">What do I need to bring to my first lesson?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">You must bring your <span class="text-[#F5A623] font-semibold">valid UK provisional driving license</span>. If you wear glasses or contact lenses for driving, please wear them. Comfortable shoes (not heavy boots or flip-flops) are recommended.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 11 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">What age can I start driving lessons?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">You can start driving lessons from <span class="text-[#F5A623] font-semibold">age 17</span> (the legal driving age in the UK). However, you can apply for your provisional license at 15 years and 9 months.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 12 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="550">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">Do you offer motorway or night driving?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">Yes! Once you've reached a confident level, we offer specialized <span class="text-[#F5A623] font-semibold">motorway lessons and night driving sessions</span> to prepare you for real-world driving conditions. Available at extra cost and by arrangement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 13 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">Are your instructors DVSA approved?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">All our instructors are <span class="text-[#F5A623] font-semibold">fully qualified, DVSA approved</span>, and have years of experience. They undergo regular checks to maintain the highest teaching standards.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 14 - CLOSED -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="650">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold pr-3 sm:pr-4">Can I use my own car for lessons?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon text-[#F5A623] text-base sm:text-xl transition-transform flex-shrink-0"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="answer-inner">
+                            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">We recommend using our <span class="text-[#F5A623] font-semibold">modern, dual-controlled cars</span> for safety and optimal learning. However, if you prefer to use your own vehicle, please discuss this with us beforehand — additional terms may apply.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Still Have Questions CTA -->
+            <div class="mt-16 sm:mt-20 p-5 sm:p-8 rounded-3xl bg-gradient-to-r from-[#F5A623]/10 to-transparent border border-[#F5A623]/20 text-center" data-aos="zoom-in">
+                <i class="fa-regular fa-message text-3xl sm:text-4xl text-[#F5A623] mb-3 inline-block"></i>
+                <h3 class="text-xl sm:text-2xl font-bold mb-3">Still have questions?</h3>
+                <p class="text-zinc-400 text-sm sm:text-base mb-5 sm:mb-6">We're here to help! Reach out to us anytime.</p>
+                <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+                    <a href="tel:+447532749660" class="btn-primary px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-black font-bold inline-flex items-center gap-2 text-sm sm:text-base"><i class="fa-solid fa-phone"></i> Call Us</a>
+                    <a href="https://wa.me/447532749660" class="border border-[#F5A623] px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-[#F5A623] hover:bg-[#F5A623]/10 transition inline-flex items-center gap-2 text-sm sm:text-base"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Footer -->
+    <footer class="bg-[#05070A] py-16 border-t border-[#F5A623]/20">
+       <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <div><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-[#F5A623] rounded-xl flex items-center justify-center"><i class="fa-solid fa-car-side text-black"></i></div><span class="text-2xl font-bold">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></div><p class="text-zinc-500">Expert driving lessons in Reading. Manual & Automatic specialists.</p></div>
+            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="index.html" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="aboutus.html" class="hover:text-[#F5A623] transition">About</a></li><li><a href="reviews.html" class="hover:text-[#F5A623] transition">Reviews</a></li><li><a href="faqs.html" class="hover:text-[#F5A623] transition">FAQs</a></li></ul></div>
+            <div><h5 class="font-bold mb-5 text-lg">Services</h5><ul class="text-zinc-400 space-y-2"><li>Manual Lessons</li><li>Automatic Lessons</li><li>Intensive Courses</li><li>Motorway / Night Driving</li></ul></div>
+<div><h5 class="font-bold mb-5 text-lg">Connect</h5>
+    <div class="flex gap-6 text-3xl text-[#F5A623]">
+        <a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+</div>   
+
+    
+
+</div>
+
+  <!-- Centered Copyright -->
+   <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6">
+    <p class="text-sm text-zinc-500">
+        © 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.
+    </p>
+</div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <a href="https://wa.me/447532749660" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <div class="back-to-top" id="backToTop"><i class="fa-solid fa-chevron-up"></i></div>
+
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 50 });
+        
+        // Back to top
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backBtn.classList.toggle('show', window.scrollY > 500); });
+        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        
+        // Navbar hide on scroll
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            let current = window.scrollY;
+            if (current > lastScroll && current > 120) navbar.style.transform = 'translateY(-100%)';
+            else navbar.style.transform = 'translateY(0)';
+            lastScroll = current;
+        });
+
+        // ==============================================
+        // ACCORDION FUNCTIONALITY - FIXED: Only ONE open at a time
+        // Answers are FULLY hidden when closed, FULLY visible when open
+        // ==============================================
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const questionBtn = item.querySelector('.faq-question');
+            
+            questionBtn.addEventListener('click', () => {
+                const isCurrentlyActive = item.classList.contains('active');
+                
+                // If currently active, just close it (no other opens)
+                if (isCurrentlyActive) {
+                    item.classList.remove('active');
+                } else {
+                    // Close ALL other FAQ items first
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+                    // Then open the clicked one
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

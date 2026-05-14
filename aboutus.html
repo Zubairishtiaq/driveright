@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>About Us | DriveRight Premium Driving School Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+       
+        * {
+            font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+       
+        :root {
+            --primary: #F5A623;
+            --primary-dark: #dc8e12;
+            --bg-deep: #05070A;
+            --bg-card: #11141C;
+        }
+       
+        body {
+            background: #020308;
+            color: #EFF3FC;
+            overflow-x: hidden;
+        }
+       
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(5, 7, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245, 166, 35, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+       
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+       
+        .nav-link:hover {
+            color: #F5A623;
+            transform: translateY(-2px);
+        }
+       
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #F5A623;
+            transition: width 0.3s ease;
+        }
+       
+        .nav-link:hover::after {
+            width: 100%;
+        }
+       
+        .btn-primary {
+            background: linear-gradient(135deg, #F5A623 0%, #dc8e12 100%);
+            transition: all 0.3s;
+        }
+       
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(245, 166, 35, 0.5);
+            filter: brightness(1.05);
+        }
+       
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #11141C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F5A623;
+            border-radius: 10px;
+        }
+
+        /* About Cards */
+        .stat-card {
+            background: linear-gradient(145deg, #0A0C12 0%, #080A0F 100%);
+            border: 1px solid rgba(245, 166, 35, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .stat-card:hover {
+            border-color: rgba(245, 166, 35, 0.5);
+            transform: translateY(-8px);
+        }
+
+        .value-card {
+            transition: all 0.4s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        .value-icon {
+            transition: all 0.3s ease;
+        }
+        .value-card:hover .value-icon {
+            transform: scale(1.1);
+            color: #F5A623;
+        }
+
+        /* Timeline / Journey */
+        .journey-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .journey-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #F5A623;
+            border-radius: 50%;
+        }
+        .journey-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% - 0.5rem);
+            background: linear-gradient(to bottom, #F5A623, transparent);
+        }
+        .journey-item:last-child::after {
+            display: none;
+        }
+
+        /* Floating animation */
+        @keyframes floatSlow {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .floating-gold {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+
+        /* Team Member Card */
+        .team-card {
+            background: linear-gradient(145deg, #0A0C12 0%, #080A0F 100%);
+            border: 1px solid rgba(245, 166, 35, 0.12);
+            transition: all 0.4s ease;
+        }
+        .team-card:hover {
+            border-color: rgba(245, 166, 35, 0.4);
+            transform: translateY(-8px);
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            background: linear-gradient(135deg, #F5A623, #dc8e12);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(245,166,35,0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 99;
+            cursor: pointer;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 9999;
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.12); background: #128C7E; }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="glass-nav sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#F5A623] to-[#dc8e12] rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-lg shadow-[#F5A623]/30 transform transition-all group-hover:scale-105">
+                    <i class="fa-solid fa-car-side text-black"></i>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-[#F5A623]">DRIVE<span class="text-white">RIGHT</span></span>
+                    <div class="text-[8px] sm:text-[10px] tracking-wider text-[#F5A623]/70">SCHOOL OF MOTORING</div>
+                </div>
+            </a>
+           <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+                <a href="index.html" class="nav-link text-white">Home</a>
+                <a href="/aboutus.html" class="nav-link text-white">About Our School</a>
+                <a href="pricing.html" class="nav-link text-white">Pricing</a>
+                <a href="faqs.html" class="nav-link text-white">FAQs</a>
+                                <a href="terms.html" class="nav-link text-white">Terms & Conditions</a>
+
+                <a href="contactus.html" class="nav-link text-white">Contact Us</a>
+            </div>
+            <a href="tel:+447532749660" class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-1 sm:gap-2 text-black shadow-lg shadow-[#F5A623]/25 text-sm sm:text-base">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span class="hidden sm:inline">+447532749660</span>
+                <span class="sm:hidden">Call</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-20 left-10 w-80 h-80 bg-[#F5A623]/10 rounded-full blur-3xl floating-gold"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-[#F5A623]/5 rounded-full blur-3xl floating-gold" style="animation-delay: 2s;"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative">
+            <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md px-5 sm:px-6 py-2 rounded-full mb-6 border border-[#F5A623]/40" data-aos="fade-down">
+                <i class="fa-regular fa-building text-[#F5A623] text-base sm:text-lg"></i>
+                <span class="text-xs sm:text-sm tracking-wide font-semibold">Our Story • Since 2018</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6" data-aos="fade-up">About <span class="text-[#F5A623]">DRIVERIGHT</span></h1>
+            <p class="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Your trusted partner on the journey to becoming a confident, safe, and skilled driver in Reading and beyond.</p>
+            <div class="w-20 sm:w-28 h-1 bg-gradient-to-r from-[#F5A623] to-transparent mx-auto mt-6 sm:mt-8 rounded-full"></div>
+        </div>
+    </section>
+
+    <!-- Our Mission & Vision -->
+    <section class="py-12 md:py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10 lg:gap-12">
+                <div class="bg-gradient-to-br from-[#11141C] to-[#0A0C12] p-8 md:p-10 rounded-3xl border border-[#F5A623]/10" data-aos="fade-right">
+                    <div class="w-16 h-16 bg-[#F5A623]/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-regular fa-eye text-3xl text-[#F5A623]"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our <span class="text-[#F5A623]">Mission</span></h2>
+                    <p class="text-zinc-400 leading-relaxed text-lg">To empower learners of all ages and backgrounds with the knowledge, skills, and confidence to drive safely and independently for life. We believe that learning to drive should be an exciting, stress-free experience, not a daunting challenge.</p>
+                </div>
+                <div class="bg-gradient-to-br from-[#11141C] to-[#0A0C12] p-8 md:p-10 rounded-3xl border border-[#F5A623]/10" data-aos="fade-left">
+                    <div class="w-16 h-16 bg-[#F5A623]/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-regular fa-compass text-3xl text-[#F5A623]"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our <span class="text-[#F5A623]">Vision</span></h2>
+                    <p class="text-zinc-400 leading-relaxed text-lg">To become Reading's most trusted and recommended driving school, known for exceptional teaching standards, modern vehicles, and a genuine commitment to every student's success on the road.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16 bg-[#0A0C12]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">DRIVERIGHT by the <span class="text-[#F5A623]">Numbers</span></h2>
+                <p class="text-zinc-400 text-lg max-w-2xl mx-auto">Our achievements speak for themselves. Here's what we've accomplished together with our students.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="stat-card p-6 md:p-8 rounded-2xl text-center" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="text-5xl md:text-6xl font-bold text-[#F5A623] mb-3">500+</div>
+                    <p class="text-zinc-400 font-semibold">Happy Students</p>
+                    <p class="text-xs text-zinc-500 mt-1">Successfully passed</p>
+                </div>
+                <div class="stat-card p-6 md:p-8 rounded-2xl text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-5xl md:text-6xl font-bold text-[#F5A623] mb-3">95%</div>
+                    <p class="text-zinc-400 font-semibold">First Time Pass Rate</p>
+                    <p class="text-xs text-zinc-500 mt-1">Above national average</p>
+                </div>
+                <div class="stat-card p-6 md:p-8 rounded-2xl text-center" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="text-5xl md:text-6xl font-bold text-[#F5A623] mb-3">8+</div>
+                    <p class="text-zinc-400 font-semibold">Years of Excellence</p>
+                    <p class="text-xs text-zinc-500 mt-1">Serving Reading</p>
+                </div>
+                <div class="stat-card p-6 md:p-8 rounded-2xl text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-5xl md:text-6xl font-bold text-[#F5A623] mb-3">10k+</div>
+                    <p class="text-zinc-400 font-semibold">Lessons Delivered</p>
+                    <p class="text-xs text-zinc-500 mt-1">And counting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey / Story -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Our <span class="text-[#F5A623]">Journey</span></h2>
+                    <div class="space-y-6">
+                        <div class="journey-item">
+                            <h3 class="text-xl font-bold text-[#F5A623]">2018 - The Beginning</h3>
+                            <p class="text-zinc-400">Founded with a single car and a vision to transform driving education in Reading with patient, student-focused instruction.</p>
+                        </div>
+                        <div class="journey-item">
+                            <h3 class="text-xl font-bold text-[#F5A623]">2020 - Growing Family</h3>
+                            <p class="text-zinc-400">Expanded our fleet and instructor team to meet growing demand, maintaining our commitment to quality.</p>
+                        </div>
+                        <div class="journey-item">
+                            <h3 class="text-xl font-bold text-[#F5A623]">2023 - Modern Fleet</h3>
+                            <p class="text-zinc-400">Introduced brand new dual-control vehicles and launched automatic driving lessons for all learners.</p>
+                        </div>
+                        <div class="journey-item">
+                            <h3 class="text-xl font-bold text-[#F5A623]">2026 - Today</h3>
+                            <p class="text-zinc-400">Proudly serving 500+ successful students with a 95% first-time pass rate, recognised as Reading's premium driving school.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <div class="relative rounded-3xl overflow-hidden border border-[#F5A623]/30 shadow-2xl">
+                        <img src="https://images.pexels.com/photos/3812489/pexels-photo-3812489.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Driving instructor with student" class="w-full h-[400px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#020308] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-[#11141C] p-4 rounded-2xl border border-[#F5A623] shadow-xl">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-award text-3xl text-[#F5A623]"></i>
+                            <div>
+                                <p class="font-bold text-lg">DVSA Approved</p>
+                                <p class="text-[#F5A623] text-xs">Registered Instructors</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-20 bg-[#0A0C12]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Our Core <span class="text-[#F5A623]">Values</span></h2>
+                <p class="text-zinc-400 text-lg max-w-2xl mx-auto">The principles that guide everything we do at DRIVERIGHT.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="value-card bg-[#11141C] p-8 rounded-2xl text-center border border-white/5" data-aos="flip-left" data-aos-delay="50">
+                    <div class="value-icon w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-2xl flex items-center justify-center text-4xl text-[#F5A623] mb-5">
+                        <i class="fa-solid fa-hand-peace"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Patience First</h3>
+                    <p class="text-zinc-400">We understand every learner is unique. Our patient approach ensures you learn at your own pace without pressure.</p>
+                </div>
+                <div class="value-card bg-[#11141C] p-8 rounded-2xl text-center border border-white/5" data-aos="flip-left" data-aos-delay="100">
+                    <div class="value-icon w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-2xl flex items-center justify-center text-4xl text-[#F5A623] mb-5">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Excellence</h3>
+                    <p class="text-zinc-400">We never compromise on teaching quality, using proven methods to help you pass with confidence.</p>
+                </div>
+                <div class="value-card bg-[#11141C] p-8 rounded-2xl text-center border border-white/5" data-aos="flip-left" data-aos-delay="150">
+                    <div class="value-icon w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-2xl flex items-center justify-center text-4xl text-[#F5A623] mb-5">
+                        <i class="fa-solid fa-shield-heart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Safety Always</h3>
+                    <p class="text-zinc-400">Your safety is our priority. Modern dual-control cars and defensive driving techniques ensure safe learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Lead Instructor -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Meet Your <span class="text-[#F5A623]">Instructor</span></h2>
+                <p class="text-zinc-400 text-lg max-w-2xl mx-auto">Expert guidance from a passionate, DVSA-approved professional.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative" data-aos="fade-right">
+                    <div class="rounded-3xl overflow-hidden border border-[#F5A623]/30 shadow-2xl">
+                        <img src="taimour.jpeg" alt="Professional driving instructor" class="w-full h-[450px] object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-[#F5A623] text-black px-6 py-3 rounded-full font-bold shadow-xl">
+                        DVSA Approved
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="text-3xl font-bold mb-2">Taimur Masood</h3>
+                    <p class="text-[#F5A623] text-lg mb-4">Lead Instructor & Founder</p>
+                    <p class="text-zinc-400 leading-relaxed mb-6">With over 8 years of professional driving instruction experience, Taimur has helped hundreds of learners across Reading achieve their driving goals. His calm, encouraging teaching style puts students at ease while building real confidence behind the wheel.</p>
+                    <div class="flex flex-wrap gap-4 mb-6">
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-[#F5A623]"></i><span>Fully DVSA Qualified</span></div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-[#F5A623]"></i><span>Enhanced DBS Checked</span></div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-[#F5A623]"></i><span>First Aid Trained</span></div>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="tel:+447532749660" class="btn-primary px-6 py-3 rounded-xl text-black font-bold inline-flex items-center gap-2"><i class="fa-solid fa-phone"></i> Call Taimur</a>
+                        <a href="https://wa.me/447532749660" class="border border-[#F5A623] px-6 py-3 rounded-xl text-[#F5A623] hover:bg-[#F5A623]/10 transition inline-flex items-center gap-2"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes Us Different -->
+    <section class="py-20 bg-[#0A0C12]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">What Makes Us <span class="text-[#F5A623]">Different</span></h2>
+                <p class="text-zinc-400 text-lg max-w-2xl mx-auto">Choosing DRIVERIGHT means choosing quality, care, and results.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-[#11141C] p-6 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="50">
+                    <i class="fa-regular fa-clock text-4xl text-[#F5A623] mb-3"></i>
+                    <h3 class="font-bold text-lg mb-2">Flexible Scheduling</h3>
+                    <p class="text-zinc-500 text-sm">Evening & weekend lessons available to fit your busy life.</p>
+                </div>
+                <div class="bg-[#11141C] p-6 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-car-side text-4xl text-[#F5A623] mb-3"></i>
+                    <h3 class="font-bold text-lg mb-2">Modern Fleet</h3>
+                    <p class="text-zinc-500 text-sm">Brand new dual-control cars, manual & automatic options.</p>
+                </div>
+                <div class="bg-[#11141C] p-6 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="150">
+                    <i class="fa-solid fa-chart-simple text-4xl text-[#F5A623] mb-3"></i>
+                    <h3 class="font-bold text-lg mb-2">Progress Tracking</h3>
+                    <p class="text-zinc-500 text-sm">Structured lesson plans with clear measurable goals.</p>
+                </div>
+                <div class="bg-[#11141C] p-6 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-regular fa-thumbs-up text-4xl text-[#F5A623] mb-3"></i>
+                    <h3 class="font-bold text-lg mb-2">Theory Support</h3>
+                    <p class="text-zinc-500 text-sm">Free theory test resources for all block booking students.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-gradient-to-br from-[#F5A623]/10 via-[#020308] to-[#020308]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up">Ready to Start Your <span class="text-[#F5A623]">Driving Journey</span>?</h2>
+            <p class="text-xl text-zinc-300 mb-8" data-aos="fade-up" data-aos-delay="100">Join hundreds of successful students who learned to drive with confidence at DRIVERIGHT.</p>
+            <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="index.html#contact" class="btn-primary px-8 py-4 rounded-xl text-black font-bold text-lg inline-flex items-center gap-2"><i class="fa-solid fa-calendar-check"></i> Book Your Lesson</a>
+                <a href="pricing.html" class="border border-[#F5A623] px-8 py-4 rounded-xl text-[#F5A623] hover:bg-[#F5A623]/10 transition text-lg font-semibold">View Prices</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#05070A] py-16 border-t border-[#F5A623]/20">
+       <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <div><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-[#F5A623] rounded-xl flex items-center justify-center"><i class="fa-solid fa-car-side text-black"></i></div><span class="text-2xl font-bold">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></div><p class="text-zinc-500">Expert driving lessons in Reading. Manual & Automatic specialists.</p></div>
+            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="index.html" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="aboutus.html" class="hover:text-[#F5A623] transition">About</a></li><li><a href="reviews.html" class="hover:text-[#F5A623] transition">Reviews</a></li><li><a href="faqs.html" class="hover:text-[#F5A623] transition">FAQs</a></li></ul></div>
+            <div><h5 class="font-bold mb-5 text-lg">Services</h5><ul class="text-zinc-400 space-y-2"><li>Manual Lessons</li><li>Automatic Lessons</li><li>Intensive Courses</li><li>Motorway / Night Driving</li></ul></div>
+<div><h5 class="font-bold mb-5 text-lg">Connect</h5>
+    <div class="flex gap-6 text-3xl text-[#F5A623]">
+        <a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+</div>   
+
+    
+
+</div>
+
+  <!-- Centered Copyright -->
+   <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6">
+    <p class="text-sm text-zinc-500">
+        © 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.
+    </p>
+</div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <a href="https://wa.me/447532749660" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <div class="back-to-top" id="backToTop"><i class="fa-solid fa-chevron-up"></i></div>
+
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 50 });
+        
+        // Back to top
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backBtn.classList.toggle('show', window.scrollY > 500); });
+        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        
+        // Navbar hide on scroll
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            let current = window.scrollY;
+            if (current > lastScroll && current > 120) navbar.style.transform = 'translateY(-100%)';
+            else navbar.style.transform = 'translateY(0)';
+            lastScroll = current;
+        });
+    </script>
+</body>
+</html>
