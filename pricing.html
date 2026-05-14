@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -194,6 +195,7 @@
             transition: all 0.3s ease;
         }
         .whatsapp-float:hover { transform: scale(1.12); background: #128C7E; }
+        
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
             70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
@@ -208,38 +210,196 @@
             background: rgba(245,166,35,0.15);
             border-color: #F5A623;
         }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 350px;
+            height: 100vh;
+            background: rgba(5, 7, 10, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            border-left: 1px solid rgba(245, 166, 35, 0.3);
+        }
+        .mobile-menu.active {
+            right: 0;
+        }
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+        }
+        .menu-overlay.active {
+            display: block;
+        }
+        .menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #F5A623;
+        }
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            padding: 80px 30px 30px;
+            gap: 20px;
+        }
+        .menu-items a {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(245, 166, 35, 0.2);
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s ease;
+        }
+        .menu-items a:hover {
+            color: #F5A623;
+        }
+        .menu-phone {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #F5A623;
+        }
+        .menu-phone a {
+            background: #F5A623;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: none;
+        }
+        .menu-phone a:hover {
+            background: #ffb84d;
+            color: black;
+        }
+        .menu-call {
+            margin-top: 10px;
+        }
+        .menu-call a {
+            background: transparent;
+            border: 2px solid #F5A623;
+            color: #F5A623;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: none;
+            transition: all 0.3s ease;
+        }
+        .menu-call a:hover {
+            background: #F5A623;
+            color: black;
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 28px;
+            color: #F5A623;
+        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .desktop-menu {
+                display: none !important;
+            }
+            .desktop-cta {
+                display: none !important;
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
     <nav id="navbar" class="glass-nav sticky top-0 z-50 w-full">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
-                <div class="w-12 h-12 bg-gradient-to-br from-[#F5A623] to-[#dc8e12] rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-[#F5A623]/30 transform transition-all group-hover:scale-105">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#F5A623] to-[#dc8e12] rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-lg shadow-[#F5A623]/30 transform transition-all group-hover:scale-105">
                     <i class="fa-solid fa-car-side text-black"></i>
                 </div>
                 <div>
-                    <span class="text-2xl font-extrabold tracking-tight text-[#F5A623]">DRIVE<span class="text-white">RIGHT</span></span>
-                    <div class="text-[10px] tracking-wider text-[#F5A623]/70">SCHOOL OF MOTORING</div>
+                    <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-[#F5A623]">DRIVE<span class="text-white">RIGHT</span></span>
+                    <div class="text-[8px] sm:text-[10px] tracking-wider text-[#F5A623]/70">SCHOOL OF MOTORING</div>
                 </div>
             </a>
-          <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+           
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold desktop-menu">
                 <a href="index.html" class="nav-link text-white">Home</a>
-                <a href="/aboutus.html" class="nav-link text-white">About Our School</a>
+                <a href="aboutus.html" class="nav-link text-white">About Our School</a>
                 <a href="pricing.html" class="nav-link text-white">Pricing</a>
                 <a href="faqs.html" class="nav-link text-white">FAQs</a>
-                                <a href="terms.html" class="nav-link text-white">Terms & Conditions</a>
-
+                <a href="terms.html" class="nav-link text-white">Terms & Conditions</a>
                 <a href="contactus.html" class="nav-link text-white">Contact Us</a>
             </div>
-            <a href="tel:+447532749660" class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-5 py-2.5 rounded-full font-bold flex items-center gap-2 text-black shadow-lg shadow-[#F5A623]/25">
+            
+            <!-- Desktop CTA Button -->
+            <a href="tel:+447532749660" class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-1 sm:gap-2 text-black shadow-lg shadow-[#F5A623]/25 text-sm sm:text-base desktop-cta">
                 <i class="fa-solid fa-phone-volume"></i>
                 <span class="hidden sm:inline">+447532749660</span>
                 <span class="sm:hidden">Call</span>
             </a>
+            
+            <!-- Mobile Hamburger -->
+            <div class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Panel -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-close" id="menuClose">
+            <i class="fa-solid fa-times"></i>
+        </div>
+        <div class="menu-items">
+            <a href="index.html">Home</a>
+            <a href="aboutus.html">About Our School</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="faqs.html">FAQs</a>
+            <a href="terms.html">Terms & Conditions</a>
+            <a href="contactus.html">Contact Us</a>
+            <div class="menu-call">
+                <a href="tel:+447532749660">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    Call Us: +447532749660
+                </a>
+            </div>
+            <div class="menu-phone">
+                <a href="https://wa.me/447532749660">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="relative py-24 md:py-32 overflow-hidden">
@@ -252,8 +412,8 @@
                 <i class="fa-solid fa-tag text-[#F5A623] text-lg"></i>
                 <span class="text-sm tracking-wide font-semibold">Transparent Pricing • No Hidden Fees</span>
             </div>
-            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-6" data-aos="fade-up">Simple & <span class="text-[#F5A623]">Fair</span> Prices</h1>
-            <p class="text-xl text-zinc-400 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">Choose from manual or automatic lessons. Block bookings save you more — pay less per hour and master the road with confidence.</p>
+            <h1 class="text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tight mb-6" data-aos="fade-up">Simple & <span class="text-[#F5A623]">Fair</span> Prices</h1>
+            <p class="text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">Choose from manual or automatic lessons. Block bookings save you more — pay less per hour and master the road with confidence.</p>
             <div class="w-28 h-1 bg-gradient-to-r from-[#F5A623] to-transparent mx-auto mt-8 rounded-full"></div>
         </div>
     </section>
@@ -261,10 +421,10 @@
     <!-- MAIN PRICING CARDS: Manual & Automatic -->
     <section class="py-12 md:py-20">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-10 lg:gap-12">
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
                 
                 <!-- MANUAL CARD -->
-                <div class="pricing-card rounded-3xl p-8 md:p-10" data-aos="fade-right" data-aos-delay="100">
+                <div class="pricing-card rounded-3xl p-6 md:p-10" data-aos="fade-right" data-aos-delay="100">
                     <div class="text-center mb-8">
                         <div class="w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-3xl flex items-center justify-center text-4xl text-[#F5A623] mb-5 border border-[#F5A623]/30">
                             <i class="fa-solid fa-gear"></i>
@@ -298,7 +458,7 @@
                 </div>
                 
                 <!-- AUTOMATIC CARD -->
-                <div class="pricing-card rounded-3xl p-8 md:p-10 border-t-4 border-t-[#F5A623]" data-aos="fade-left" data-aos-delay="150">
+                <div class="pricing-card rounded-3xl p-6 md:p-10 border-t-4 border-t-[#F5A623]" data-aos="fade-left" data-aos-delay="150">
                     <div class="text-center mb-8">
                         <div class="w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-3xl flex items-center justify-center text-4xl text-[#F5A623] mb-5 border border-[#F5A623]/30">
                             <i class="fa-solid fa-car"></i>
@@ -411,57 +571,59 @@
     <section id="contact-booking" class="py-24 bg-gradient-to-br from-[#F5A623]/5 via-[#020308] to-[#020308]">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <div class="inline-flex bg-[#F5A623]/20 rounded-full px-6 py-2 mb-6"><i class="fa-solid fa-phone-volume text-[#F5A623] mr-2"></i> Secure your spot today</div>
-            <h2 class="text-5xl md:text-6xl font-bold mb-6">Ready to start your journey?</h2>
-            <p class="text-xl text-zinc-300 mb-10">Choose your lesson type, block booking, and let's get you on the road to success.</p>
-            <div class="flex flex-col md:flex-row gap-6 justify-center">
-                <a href="tel:+447532749660" class="flex-1 max-w-sm bg-[#F5A623] text-black py-5 rounded-2xl font-bold text-2xl flex items-center justify-center gap-4 hover:scale-105 transition shadow-xl"><i class="fa-solid fa-phone text-3xl"></i> Call Now</a>
-                <a href="https://wa.me/447532749660" class="flex-1 max-w-sm border-2 border-[#F5A623] py-5 rounded-2xl font-bold text-2xl hover:bg-[#F5A623] hover:text-black transition flex items-center justify-center gap-4"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">Ready to start your journey?</h2>
+            <p class="text-lg sm:text-xl text-zinc-300 mb-10">Choose your lesson type, block booking, and let's get you on the road to success.</p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="tel:+447532749660" class="w-full sm:w-auto sm:flex-1 sm:max-w-sm bg-[#F5A623] text-black py-5 rounded-2xl font-bold text-xl sm:text-2xl flex items-center justify-center gap-4 hover:scale-105 transition shadow-xl"><i class="fa-solid fa-phone text-2xl sm:text-3xl"></i> Call Now</a>
+                <a href="https://wa.me/447532749660" class="w-full sm:w-auto sm:flex-1 sm:max-w-sm border-2 border-[#F5A623] py-5 rounded-2xl font-bold text-xl sm:text-2xl hover:bg-[#F5A623] hover:text-black transition flex items-center justify-center gap-4"><i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i> WhatsApp</a>
             </div>
             <p class="mt-6 text-zinc-500">✉️ Taimurmasood3@gmail.com | 📍 Reading, UK</p>
         </div>
     </section>
 
-   <!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-[#05070A] py-16 border-t border-[#F5A623]/20">
-       <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
             <div><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-[#F5A623] rounded-xl flex items-center justify-center"><i class="fa-solid fa-car-side text-black"></i></div><span class="text-2xl font-bold">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></div><p class="text-zinc-500">Expert driving lessons in Reading. Manual & Automatic specialists.</p></div>
             <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="index.html" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="aboutus.html" class="hover:text-[#F5A623] transition">About</a></li><li><a href="reviews.html" class="hover:text-[#F5A623] transition">Reviews</a></li><li><a href="faqs.html" class="hover:text-[#F5A623] transition">FAQs</a></li></ul></div>
             <div><h5 class="font-bold mb-5 text-lg">Services</h5><ul class="text-zinc-400 space-y-2"><li>Manual Lessons</li><li>Automatic Lessons</li><li>Intensive Courses</li><li>Motorway / Night Driving</li></ul></div>
-<div><h5 class="font-bold mb-5 text-lg">Connect</h5>
-    <div class="flex gap-6 text-3xl text-[#F5A623]">
-        <a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition">
-            <i class="fa-brands fa-facebook"></i>
-        </a>
-        <a href="#" target="_blank" class="hover:scale-110 transition">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-    </div>
-</div>   
-
-    
-
-</div>
-
-  <!-- Centered Copyright -->
-   <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6">
-    <p class="text-sm text-zinc-500">
-        © 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.
-    </p>
-</div>
+            <div><h5 class="font-bold mb-5 text-lg">Connect</h5>
+                <div class="flex gap-6 text-3xl text-[#F5A623]">
+                    <a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" target="_blank" class="hover:scale-110 transition">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Centered Copyright -->
+        <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6">
+            <p class="text-sm text-zinc-500">
+                © 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.
+            </p>
+        </div>
     </footer>
+
     <!-- Floating Elements -->
     <a href="https://wa.me/447532749660" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     <div class="back-to-top" id="backToTop"><i class="fa-solid fa-chevron-up"></i></div>
 
     <script>
         AOS.init({ duration: 800, once: true, offset: 50 });
+        
         // Back to top
         const backBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => { backBtn.classList.toggle('show', window.scrollY > 500); });
+        window.addEventListener('scroll', () => { 
+            backBtn.classList.toggle('show', window.scrollY > 500); 
+        });
         backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        
         // Navbar hide on scroll
         let lastScroll = 0;
         const navbar = document.getElementById('navbar');
@@ -471,6 +633,34 @@
             else navbar.style.transform = 'translateY(0)';
             lastScroll = current;
         });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuClose = document.getElementById('menuClose');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
