@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩  | Premium Driving School Reading | Manual & Auto Lessons</title>
+    <title>𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 | Premium Driving School Reading | Manual & Auto Lessons</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <!-- Swiper for better reviews carousel -->
@@ -162,6 +161,42 @@
             transform: scale(1.12);
         }
 
+        /* Terms card styling for index section */
+        .terms-card {
+            background: #0A0C12;
+            border: 1px solid rgba(245, 166, 35, 0.15);
+            transition: all 0.35s ease;
+        }
+        .terms-card:hover {
+            border-color: rgba(245, 166, 35, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.6);
+        }
+        .list-bullet {
+            position: relative;
+            padding-left: 1.75rem;
+        }
+        .list-bullet::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #F5A623;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .list-bullet:hover::before {
+            transform: translateX(4px);
+        }
+        .section-icon {
+            background: linear-gradient(135deg, rgba(245,166,35,0.12) 0%, rgba(220,142,18,0.05) 100%);
+            transition: all 0.3s ease;
+        }
+        .terms-card:hover .section-icon {
+            transform: scale(1.05);
+            background: rgba(245,166,35,0.2);
+            color: #F5A623;
+        }
+
         /* Mobile Menu Styles */
         .mobile-menu {
             position: fixed;
@@ -251,7 +286,7 @@
     </style>
 </head>
 <body class="bg-[#020308] text-zinc-200">
-    <!-- ENHANCED NAVBAR with Logo Image & Glassmorphism -->
+    <!-- ENHANCED NAVBAR -->
     <nav id="navbar" class="glass-nav sticky top-0 z-50 w-full">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3 group cursor-pointer">
@@ -275,9 +310,9 @@
             </div>
             
             <!-- Desktop CTA Button -->
-            <a href="tel:+447532749660" class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-5 py-2.5 rounded-full font-bold flex items-center gap-2 text-black shadow-lg shadow-[#F5A623]/25 desktop-cta">
+            <a href="tel: 07532749660" class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-5 py-2.5 rounded-full font-bold flex items-center gap-2 text-black shadow-lg shadow-[#F5A623]/25 desktop-cta">
                 <i class="fa-solid fa-phone-volume"></i>
-                <span>+447532749660</span>
+                <span>07532749660</span>
             </a>
             
             <!-- Mobile Hamburger -->
@@ -301,19 +336,18 @@
             <a href="terms.html" class="text-white hover:text-[#F5A623] transition">Terms & Conditions</a>
             <a href="contactus.html" class="text-white hover:text-[#F5A623] transition">Contact Us</a>
             <div class="menu-phone">
-                <a href="tel:+447532749660">
+                <a href="tel: 07532749660">
                     <i class="fa-solid fa-phone-volume"></i>
-                    +447532749660
+                     07532749660
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- HERO SLIDER -->
+    <!-- HERO SLIDER (unchanged) -->
     <section id="home" class="relative">
         <div class="swiper hero-swiper w-full h-[95vh]">
             <div class="swiper-wrapper">
-                
                 <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1600');">
                     <div class="hero-overlay absolute inset-0"></div>
                     <div class="relative z-10 h-full flex items-center justify-center text-center px-6">
@@ -326,9 +360,8 @@
                             <p class="text-xl text-zinc-300 mb-10">Automatic & Manual | High 1st Time Pass Rate | Weekend Slots</p>
                             <div class="flex flex-col sm:flex-row gap-5 justify-center">
                                 <a href="#contact" class="btn-primary text-black font-bold text-lg px-8 py-4 rounded-2xl flex items-center justify-center gap-2"><i class="fa-solid fa-calendar-check"></i> Book Your Lesson</a>
-                                <a href="https://wa.me/447532749660"
-                                class="flex-1 max-w-sm border-2 border-[#F5A623] py-6 rounded-2xl font-bold text-2xl hover:bg-[#F5A623] hover:text-black transition flex items-center justify-center gap-4">
-                                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                                <a href="https://wa.me/447532749660" class="flex-1 max-w-sm border-2 border-[#F5A623] py-6 rounded-2xl font-bold text-2xl hover:bg-[#F5A623] hover:text-black transition flex items-center justify-center gap-4">
+                                    <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
                                 </a>                            
                             </div>
                         </div>
@@ -336,13 +369,12 @@
                 </div>
             </div>
         </div>
-        <!-- floating car element -->
         <div class="absolute bottom-8 right-8 z-20 hidden lg:block opacity-60 float-car">
             <i class="fa-solid fa-car-side text-7xl text-[#F5A623] drop-shadow-2xl"></i>
         </div>
     </section>
 
-    <!-- NEW SECTION: Why Learners Choose 𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩  (Adapted from your image) -->
+    <!-- Why Learners Choose (unchanged) -->
     <section class="py-20 bg-[#05070A]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
@@ -352,40 +384,24 @@
                     Our DVSA-licensed instructors use expert coaching to build your confidence and ensure you pass your test with ease.
                 </p>
             </div>
-
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1 -->
                 <div class="why-card bg-[#11141C] p-8 rounded-3xl border border-zinc-800 hover:border-[#F5A623]/50 text-center card-hover group">
-                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6">
-                        <i class="fa-solid fa-comments"></i>
-                    </div>
+                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6"><i class="fa-solid fa-comments"></i></div>
                     <h3 class="text-2xl font-bold mb-3">Say Goodbye to Driving Anxiety</h3>
                     <p class="text-zinc-400">Calm, patient instruction in a modern that makes learning enjoyable and stress-free.</p>
                 </div>
-
-                <!-- Card 2 -->
                 <div class="why-card bg-[#11141C] p-8 rounded-3xl border border-zinc-800 hover:border-[#F5A623]/50 text-center card-hover group">
-                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6">
-                        <i class="fa-solid fa-trophy"></i>
-                    </div>
+                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6"><i class="fa-solid fa-trophy"></i></div>
                     <h3 class="text-2xl font-bold mb-3">Proof in the Success Stories</h3>
                     <p class="text-zinc-400">High first-time pass rate with real students sharing their success and confidence on the road.</p>
                 </div>
-
-                <!-- Card 3 -->
                 <div class="why-card bg-[#11141C] p-8 rounded-3xl border border-zinc-800 hover:border-[#F5A623]/50 text-center card-hover group">
-                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
+                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6"><i class="fa-solid fa-chart-line"></i></div>
                     <h3 class="text-2xl font-bold mb-3">Progress You Can Feel</h3>
                     <p class="text-zinc-400">Structured lessons with clear feedback and measurable improvement every single session.</p>
                 </div>
-
-                <!-- Card 4 -->
                 <div class="why-card bg-[#11141C] p-8 rounded-3xl border border-zinc-800 hover:border-[#F5A623]/50 text-center card-hover group">
-                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6">
-                        <i class="fa-solid fa-road"></i>
-                    </div>
+                    <div class="why-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623]/80 mb-6"><i class="fa-solid fa-road"></i></div>
                     <h3 class="text-2xl font-bold mb-3">Decode Any Junction, Anywhere</h3>
                     <p class="text-zinc-400">Expert training on roundabouts, busy roads, motorways and every challenging situation in your test area.</p>
                 </div>
@@ -393,14 +409,12 @@
         </div>
     </section>
 
-    <!-- WELCOME + Why Choose (Split Layout Enhanced) -->
+    <!-- WELCOME + Why Choose (unchanged) -->
     <section id="about" class="py-24 bg-[#0A0C12]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16 items-center">
-                <!-- Left Image with realistic badge -->
                 <div class="relative group">
-                    <img src="images.jfif"
-                         alt="Driving instructor with student" class="rounded-3xl shadow-2xl w-full object-cover h-[500px] transition-transform duration-500 group-hover:scale-[1.02]">
+                    <img src="images.jfif" alt="Driving instructor with student" class="rounded-3xl shadow-2xl w-full object-cover h-[500px] transition-transform duration-500 group-hover:scale-[1.02]">
                     <div class="absolute -bottom-6 -right-6 bg-[#11161F] p-5 rounded-2xl border border-[#F5A623] shadow-xl backdrop-blur-sm">
                         <div class="flex items-center gap-4">
                             <div class="text-5xl"><i class="fa-solid fa-star text-[#F5A623]"></i></div>
@@ -408,13 +422,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- Right Content -->
                 <div>
                     <span class="text-[#F5A623] font-semibold tracking-wider">🏆 PREMIER DRIVING SCHOOL</span>
                     <h2 class="text-5xl font-bold mt-3 mb-6 leading-tight">Welcome to <span class="text-[#F5A623]">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></h2>
                     <p class="text-xl text-zinc-300 mb-6">Your Premier Choice for Driving Lessons in Reading</p>
                     <p class="text-zinc-400 leading-relaxed mb-8">At 𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 , we pride ourselves on providing top-notch driving instruction. From beginners to advanced, we ensure every student drives with confidence, skill, and absolute safety.</p>
-                   
                     <div class="space-y-6">
                         <div class="flex gap-4"><div class="w-12 h-12 bg-[#F5A623]/10 text-[#F5A623] rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-chalkboard-user"></i></div><div><h4 class="text-xl font-bold">Personalized 1-on-1 Instruction</h4><p class="text-zinc-400">Dedicated expert instructor, lessons tailored to your pace.</p></div></div>
                         <div class="flex gap-4"><div class="w-12 h-12 bg-[#F5A623]/10 text-[#F5A623] rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-clock"></i></div><div><h4 class="text-xl font-bold">Flexible Schedule</h4><p class="text-zinc-400">Evenings, weekends & intensive courses for busy lives.</p></div></div>
@@ -425,94 +437,38 @@
         </div>
     </section>
 
-    <!-- UPDATED SERVICES SECTION - LESSONS TAILORED FOR YOU -->
+    <!-- SERVICES SECTION (unchanged) -->
     <section class="py-20 bg-[#05070A]">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-14">
-               <h2 class="text-5xl font-bold mt-3 mb-6 leading-tight">LESSONS TAILORED <span class="text-[#F5A623]">FOR YOU</span></h2>
-                <div class="w-24 h-1 bg-[#F5A623] mx-auto mt-4 rounded-full"></div>
-            </div>
+            <div class="text-center mb-14"><h2 class="text-5xl font-bold mt-3 mb-6 leading-tight">LESSONS TAILORED <span class="text-[#F5A623]">FOR YOU</span></h2><div class="w-24 h-1 bg-[#F5A623] mx-auto mt-4 rounded-full"></div></div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Beginner Lessons -->
-                <div class="service-card p-8 rounded-3xl text-center card-hover">
-                    <div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6">
-                         <i class="fa-solid fa-car"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Beginner Lessons</h3>
-                    <p class="text-zinc-400 mb-6">Perfect for new drivers. Learn the basics and build confidence step by step.</p>
-                
-                </div>
-
-                <!-- One Week Intensive -->
-                <div class="service-card p-8 rounded-3xl text-center card-hover">
-                    <div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6">
-                        <i class="fa-solid fa-calendar-days"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">One Week Intensive Course</h3>
-                    <p class="text-zinc-400 mb-6">Fast-track your driving test with our 1 week intensive courses.</p>
-                  
-                </div>
-
-                <!-- Motorway Lessons -->
-                <div class="service-card p-8 rounded-3xl text-center card-hover">
-                    <div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6">
-                        <i class="fa-solid fa-road"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Motorway Lessons</h3>
-                    <p class="text-zinc-400 mb-6">Gain confidence and learn essential motorway skills with expert guidance.</p>
-                   
-                </div>
-
-                <!-- Refresher Lessons -->
-                <div class="service-card p-8 rounded-3xl text-center card-hover">
-                    <div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6">
-                        <i class="fa-solid fa-rotate"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Refresher Lessons</h3>
-                    <p class="text-zinc-400 mb-6">Brush up your skills and regain confidence on the road.</p>
-                   
-                </div>
+                <div class="service-card p-8 rounded-3xl text-center card-hover"><div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6"><i class="fa-solid fa-car"></i></div><h3 class="text-2xl font-bold mb-3">Beginner Lessons</h3><p class="text-zinc-400 mb-6">Perfect for new drivers. Learn the basics and build confidence step by step.</p></div>
+                <div class="service-card p-8 rounded-3xl text-center card-hover"><div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6"><i class="fa-solid fa-calendar-days"></i></div><h3 class="text-2xl font-bold mb-3">One Week Intensive Course</h3><p class="text-zinc-400 mb-6">Fast-track your driving test with our 1 week intensive courses.</p></div>
+                <div class="service-card p-8 rounded-3xl text-center card-hover"><div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6"><i class="fa-solid fa-road"></i></div><h3 class="text-2xl font-bold mb-3">Motorway Lessons</h3><p class="text-zinc-400 mb-6">Gain confidence and learn essential motorway skills with expert guidance.</p></div>
+                <div class="service-card p-8 rounded-3xl text-center card-hover"><div class="service-icon mx-auto w-20 h-20 flex items-center justify-center text-5xl text-[#F5A623] mb-6"><i class="fa-solid fa-rotate"></i></div><h3 class="text-2xl font-bold mb-3">Refresher Lessons</h3><p class="text-zinc-400 mb-6">Brush up your skills and regain confidence on the road.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- DARK & GOLD BANNER -->
+    <!-- DARK & GOLD BANNER (unchanged) -->
     <section class="py-8 bg-[#11141C] border-y border-[#F5A623]/30">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-wrap justify-center items-center gap-11 md:gap-16 text-center">
-                <div class="flex items-center gap-4">
-                    <i class="fa-solid fa-bolt text-4xl text-[#F5A623]"></i>
-                    <div>
-                        <p class="uppercase text-xs tracking-widest font-semibold text-zinc-400">DISCOUNT & PRICING</p>
-                        <p class="text-2xl font-bold text-[#F5A623]">BEST PRICE GUARANTEED</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4">
-                    <i class="fa-solid fa-clock text-4xl text-[#F5A623]"></i>
-                    <div>
-                        <p class="uppercase text-xs tracking-widest font-semibold text-zinc-400">OPENING HOURS</p>
-                        <p class="text-2xl font-bold text-white">Monday to Saturday 7:30AM-5PM</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4">
-                    <i class="fa-solid fa-phone text-4xl text-[#F5A623]"></i>
-                    <div>
-                        <p class="uppercase text-xs tracking-widest font-semibold text-zinc-400">GIVE US A CALL</p>
-                        <a href="tel:+447532749660" class="text-2xl font-bold text-[#F5A623] hover:text-white transition">+447532749660</a>
-                    </div>
-                </div>
+                <div class="flex items-center gap-4"><i class="fa-solid fa-bolt text-4xl text-[#F5A623]"></i><div><p class="uppercase text-xs tracking-widest font-semibold text-zinc-400">DISCOUNT & PRICING</p><p class="text-2xl font-bold text-[#F5A623]">BEST PRICE GUARANTEED</p></div></div>
+                <div class="flex items-center gap-4"><i class="fa-solid fa-clock text-4xl text-[#F5A623]"></i><div><p class="uppercase text-xs tracking-widest font-semibold text-zinc-400">OPENING HOURS</p><p class="text-2xl font-bold text-white">Monday to Saturday 7:30AM-5PM</p></div></div>
+                <div class="flex items-center gap-4"><i class="fa-solid fa-phone text-4xl text-[#F5A623]"></i><div><p class="uppercase text-xs tracking-widest font-semibold text-zinc-400">GIVE US A CALL</p><a href="tel: 07532749660" class="text-2xl font-bold text-[#F5A623] hover:text-white transition"> 07532749660</a></div></div>
             </div>
         </div>
     </section>
 
-    <!-- REVIEWS SECTION (horizontal swiper with pause on hover) -->
+    <!-- REVIEWS SECTION (unchanged) -->
     <section id="reviews" class="py-24 bg-[#05070A]">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-5xl font-bold text-center mb-5">What Our Students Say ⭐</h2>
             <div class="w-20 h-1 bg-[#F5A623] mx-auto mb-12 rounded-full"></div>
             <div class="swiper review-swiper overflow-hidden py-8">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><div class="bg-[#11161F] p-8 rounded-3xl border border-[#F5A623]/20 h-full"><div class="flex text-[#F5A623] mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="italic text-zinc-300 mb-6">“Taimur is an amazing instructor! I passed first time thanks to his calm teaching style & modern.”</p><p class="font-bold">— Sarah M.</p><p class="text-zinc-500 text-sm">Reading • Passed 2025</p></div></div>
+                    <div class="swiper-slide"><div class="bg-[#11161F] p-8 rounded-3xl border border-[#F5A623]/20 h-full"><div class="flex text-[#F5A623] mb-4">★★★★★</div><p class="italic text-zinc-300 mb-6">“Taimur is an amazing instructor! I passed first time thanks to his calm teaching style & modern.”</p><p class="font-bold">— Sarah M.</p><p class="text-zinc-500 text-sm">Reading • Passed 2025</p></div></div>
                     <div class="swiper-slide"><div class="bg-[#11161F] p-8 rounded-3xl border border-[#F5A623]/20 h-full"><div class="flex text-[#F5A623] mb-4">★★★★★</div><p class="italic text-zinc-300 mb-6">“Flexible weekend lessons and block booking discount saved me money. Very professional and patient. Highly recommended!”</p><p class="font-bold">— James Patel</p><p class="text-zinc-500 text-sm">Reading</p></div></div>
                     <div class="swiper-slide"><div class="bg-[#11161F] p-8 rounded-3xl border border-[#F5A623]/20 h-full"><div class="flex text-[#F5A623] mb-4">★★★★★</div><p class="italic text-zinc-300 mb-6">“The intensive course + motorway lesson was a game changer. I feel super confident on the road. Thank you 𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 !”</p><p class="font-bold">— Priya K.</p><p class="text-zinc-500 text-sm">Reading</p></div></div>
                     <div class="swiper-slide"><div class="bg-[#11161F] p-8 rounded-3xl border border-[#F5A623]/20 h-full"><div class="flex text-[#F5A623] mb-4">★★★★★</div><p class="italic text-zinc-300 mb-6">“Excellent automatic lessons, brand new car, very kind instructor. Passed with flying colours.”</p><p class="font-bold">— Lauren W.</p><p class="text-zinc-500 text-sm">Reading</p></div></div>
@@ -523,7 +479,7 @@
         </div>
     </section>
 
-    <!-- FAQ Accordion Style -->
+    <!-- FAQ SECTION (unchanged) -->
     <section id="faqs" class="py-20 bg-[#0A0C12]">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-5xl font-bold text-center mb-12">FAQs</h2>
@@ -536,230 +492,112 @@
         </div>
     </section>
 
-    <!-- FINAL CONTACT / CTA -->
-  
+    <!-- ✨ NEW SECTION: TERMS & CONDITIONS (Condensed, Animated, User-Friendly) ✨ -->
+    <section class="py-20 bg-[#05070A] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 pointer-events-none"><div class="absolute top-20 left-10 w-72 h-72 bg-[#F5A623]/10 rounded-full blur-3xl"></div></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-2">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm px-5 py-2 rounded-full mb-5 border border-[#F5A623]/30">
+                    <i class="fa-solid fa-scale-balanced text-[#F5A623]"></i>
+                    <span class="text-sm tracking-wide font-semibold">Legal Agreement</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Our <span class="text-[#F5A623]">Terms & Conditions</span></h2>
+                <p class="text-zinc-400 max-w-2xl mx-auto mt-4">Clear, fair policies to ensure the best learning experience. Please read carefully.</p>
+                <div class="w-20 h-1 bg-[#F5A623] mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5">
+                <!-- Card 1: General & Eligibility -->
+                <div class="terms-card rounded-2xl p-6 transition-all duration-300 bg-[#0A0C12] border border-[#F5A623]/15">
+                    <div class="flex items-start gap-4">
+                        <div class="section-icon w-12 h-12 rounded-xl flex items-center justify-center text-xl text-[#F5A623] shrink-0"><i class="fa-solid fa-file-signature"></i></div>
+                        <div><h3 class="text-xl font-bold mb-2">1. General Agreement</h3><p class="text-zinc-400 text-sm">By enrolling, you agree to 𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 's terms. All students must provide a valid license/permit.</p></div>
+                    </div>
+                </div>
+                <div class="terms-card rounded-2xl p-6 transition-all duration-300 bg-[#0A0C12] border border-[#F5A623]/15">
+                    <div class="flex items-start gap-4"><div class="section-icon w-12 h-12 rounded-xl flex items-center justify-center text-xl text-[#F5A623] shrink-0"><i class="fa-solid fa-credit-card"></i></div><div><h3 class="text-xl font-bold mb-2">2. Payment Policy</h3><p class="text-zinc-400 text-sm">Lessons paid in advance. Packages valid for 6 months. No refund for expired unused lessons.</p></div></div>
+                </div>
+                <div class="terms-card rounded-2xl p-6 transition-all duration-300 bg-[#0A0C12] border border-[#F5A623]/15">
+                    <div class="flex items-start gap-4"><div class="section-icon w-12 h-12 rounded-xl flex items-center justify-center text-xl text-[#F5A623] shrink-0"><i class="fa-solid fa-calendar-xmark"></i></div><div><h3 class="text-xl font-bold mb-2">3. Cancellation Policy</h3><p class="text-zinc-400 text-sm">48-hour notice required. Late cancellations or no-shows charged full lesson fee.</p></div></div>
+                </div>
+                <div class="terms-card rounded-2xl p-6 transition-all duration-300 bg-[#0A0C12] border border-[#F5A623]/15">
+                    <div class="flex items-start gap-4"><div class="section-icon w-12 h-12 rounded-xl flex items-center justify-center text-xl text-[#F5A623] shrink-0"><i class="fa-solid fa-hand-sparkles"></i></div><div><h3 class="text-xl font-bold mb-2">4. Conduct & Hygiene</h3><p class="text-zinc-400 text-sm">Appropriate hygiene, suitable attire, no intoxication. Misconduct leads to lesson termination & full fee.</p></div></div>
+                </div>
+                <div class="terms-card rounded-2xl p-6 transition-all duration-300 bg-[#0A0C12] border border-[#F5A623]/15">
+                    <div class="flex items-start gap-4"><div class="section-icon w-12 h-12 rounded-xl flex items-center justify-center text-xl text-[#F5A623] shrink-0"><i class="fa-solid fa-money-bill-wave"></i></div><div><h3 class="text-xl font-bold mb-2">5. Refunds</h3><p class="text-zinc-400 text-sm">Unused lessons may be refunded with 7-day written notice before start. No refunds after commencement.</p></div></div>
+                </div>
+                <div class="terms-card rounded-2xl p-6 transition-all duration-300 bg-[#0A0C12] border border-[#F5A623]/15">
+                    <div class="flex items-start gap-4"><div class="section-icon w-12 h-12 rounded-xl flex items-center justify-center text-xl text-[#F5A623] shrink-0"><i class="fa-solid fa-car"></i></div><div><h3 class="text-xl font-bold mb-2">6. Vehicle & Instructor</h3><p class="text-zinc-400 text-sm">Same instructor/vehicle not guaranteed. School reserves right to change with notice.</p></div></div>
+                </div>
+            </div>
+
+            <!-- Compact list of additional key points -->
+            <div class="mt-10 p-6 bg-[#11141C]/60 rounded-2xl border border-[#F5A623]/20 backdrop-blur-sm">
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-[#F5A623] mt-1"></i><span class="text-zinc-300"><span class="font-semibold text-white">Eligibility:</span> Valid license & meet legal requirements.</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-[#F5A623] mt-1"></i><span class="text-zinc-300"><span class="font-semibold text-white">Liability:</span> School not liable for student negligence.</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-[#F5A623] mt-1"></i><span class="text-zinc-300"><span class="font-semibold text-white">Test Pass:</span> Not guaranteed — depends on student performance.</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-[#F5A623] mt-1"></i><span class="text-zinc-300"><span class="font-semibold text-white">Privacy:</span> Your data is kept confidential.</span></div>
+                </div>
+                <div class="mt-5 pt-4 border-t border-[#F5A623]/20 text-center">
+                    <p class="text-xs text-zinc-500">Last updated: March 2026 | Full terms available on request.</p>
+                    <a href="terms.html" class="inline-flex items-center gap-2 mt-3 text-[#F5A623] hover:text-white transition text-sm font-medium"><i class="fa-solid fa-arrow-right"></i> Read full Terms & Conditions page</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CONTACT / CTA (unchanged) -->
     <section id="contact" class="py-28 bg-gradient-to-br from-[#F5A623]/10 via-[#020308] to-[#020308] text-center">
         <div class="max-w-4xl mx-auto px-6">
             <div class="inline-flex bg-[#F5A623]/20 rounded-full px-6 py-2 mb-6"><i class="fa-solid fa-phone-volume text-[#F5A623] mr-2"></i> 24/7 Support</div>
             <h2 class="text-5xl md:text-6xl font-bold mb-6">Ready to Hit the Road?</h2>
             <p class="text-xl md:text-2xl text-zinc-300 mb-12">Let's get you driving confidently today. Call, WhatsApp or email us now.</p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="tel:+447532749660" class="w-full sm:w-auto sm:flex-1 sm:max-w-sm bg-[#F5A623] text-black py-5 md:py-6 rounded-2xl font-bold text-xl md:text-2xl flex items-center justify-center gap-3 md:gap-4 hover:scale-105 transition shadow-xl"><i class="fa-solid fa-phone text-2xl md:text-3xl"></i> +447532749660</a>
-                <a href="https://wa.me/447532749660" class="w-full sm:w-auto sm:flex-1 sm:max-w-sm border-2 border-[#F5A623] py-5 md:py-6 rounded-2xl font-bold text-xl md:text-2xl hover:bg-[#F5A623] hover:text-black transition flex items-center justify-center gap-3 md:gap-4">
-                <i class="fa-brands fa-whatsapp text-2xl md:text-3xl"></i> Chat on WhatsApp
-                </a>
+                <a href="tel: 07532749660" class="w-full sm:w-auto sm:flex-1 sm:max-w-sm bg-[#F5A623] text-black py-5 md:py-6 rounded-2xl font-bold text-xl md:text-2xl flex items-center justify-center gap-3 md:gap-4 hover:scale-105 transition shadow-xl"><i class="fa-solid fa-phone text-2xl md:text-3xl"></i>  07532749660</a>
+                <a href="https://wa.me/447532749660" class="w-full sm:w-auto sm:flex-1 sm:max-w-sm border-2 border-[#F5A623] py-5 md:py-6 rounded-2xl font-bold text-xl md:text-2xl hover:bg-[#F5A623] hover:text-black transition flex items-center justify-center gap-3 md:gap-4"><i class="fa-brands fa-whatsapp text-2xl md:text-3xl"></i> Chat on WhatsApp</a>
             </div>
             <p class="mt-8 text-zinc-500 text-lg">✉️ Taimurmasood3@gmail.com | 📍 Reading</p>
         </div>
     </section>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/447532749660"
-       target="_blank"
-       class="whatsapp-float"
-       aria-label="Chat on WhatsApp">
-       <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/447532749660" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <style>.whatsapp-float{position:fixed;bottom:20px;right:20px;background-color:#25D366;color:white;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 8px 20px rgba(0,0,0,0.3);z-index:9999;animation:pulse 2s infinite;transition:transform 0.3s ease;}.whatsapp-float:hover{transform:scale(1.1);}@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.7);}70%{box-shadow:0 0 0 20px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}.map-section{width:100%;padding:70px 20px;background:#0b0f19;text-align:center;}.map-header h2{font-size:34px;font-weight:800;margin-bottom:10px;color:#ffffff;}.map-header p{font-size:16px;color:#a1a1aa;margin-bottom:35px;}.map-container{width:100%;max-width:1200px;margin:0 auto;border-radius:22px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.08);background:#111827;}.map-container iframe{width:100%;height:450px;border:0;filter:contrast(1.05) brightness(0.95);}@media (max-width:768px){.map-container iframe{height:300px;}.map-header h2{font-size:26px;}}</style>
+    <section class="map-section"><div class="map-header"><h2>📍 Find Us Here</h2><p>Visit our location easily using Google Maps</p></div><div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.488487157327!2d-0.9769435499999999!3d51.44918714999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48769b13156fc395%3A0xaac1c527ff4ba0ca!2sGarnet%20St%2C%20Reading%20RG1%206BA%2C%20UK!5e0!3m2!1sen!2s!4v1778704821770!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></section>
 
-    <style>
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            z-index: 9999;
-            animation: pulse 2s infinite;
-            transition: transform 0.3s ease;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-        .map-section {
-            width: 100%;
-            padding: 70px 20px;
-            background: #0b0f19;
-            text-align: center;
-        }
-        .map-header h2 {
-            font-size: 34px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: #ffffff;
-        }
-        .map-header p {
-            font-size: 16px;
-            color: #a1a1aa;
-            margin-bottom: 35px;
-        }
-        .map-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-radius: 22px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255,255,255,0.08);
-            background: #111827;
-        }
-        .map-container iframe {
-            width: 100%;
-            height: 450px;
-            border: 0;
-            filter: contrast(1.05) brightness(0.95);
-        }
-        @media (max-width: 768px) {
-            .map-container iframe {
-                height: 300px;
-            }
-            .map-header h2 {
-                font-size: 26px;
-            }
-        }
-    </style>
-
-    <section class="map-section">
-        <div class="map-header">
-            <h2>📍 Find Us Here</h2>
-            <p>Visit our location easily using Google Maps</p>
-        </div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.488487157327!2d-0.9769435499999999!3d51.44918714999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48769b13156fc395%3A0xaac1c527ff4ba0ca!2sGarnet%20St%2C%20Reading%20RG1%206BA%2C%20UK!5e0!3m2!1sen!2s!4v1778704821770!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </section>
-
-    <!-- FOOTER (dark with branding) -->
+    <!-- FOOTER -->
     <footer class="bg-[#05070A] py-16 border-t border-[#F5A623]/20">
-        <!-- Contact Form -->
-        <div class="max-w-4xl mx-auto px-6 mb-16">
-            <h3 class="text-3xl font-bold text-center mb-8 text-white">Get In Touch With Us</h3>
-            <form class="grid md:grid-cols-2 gap-6">
-                <input type="text" placeholder="Your Full Name" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white">
-                <input type="email" placeholder="Email Address" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white">
-                <input type="tel" placeholder="Phone Number" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white">
-                <input type="text" placeholder="Preferred Date / Time" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white">
-                <textarea placeholder="Your Message (Optional)" rows="4" class="md:col-span-2 bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white"></textarea>
-                <button type="submit" class="md:col-span-2 bg-[#F5A623] hover:bg-[#ffb84d] text-black font-bold py-4 rounded-2xl transition text-lg">SEND MESSAGE</button>
-            </form>
+        <div class="max-w-4xl mx-auto px-6 mb-16"><h3 class="text-3xl font-bold text-center mb-8 text-white">Get In Touch With Us</h3>
+            <form class="grid md:grid-cols-2 gap-6"><input type="text" placeholder="Your Full Name" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white"><input type="email" placeholder="Email Address" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white"><input type="tel" placeholder="Phone Number" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white"><input type="text" placeholder="Preferred Date / Time" class="bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white"><textarea placeholder="Your Message (Optional)" rows="4" class="md:col-span-2 bg-[#11141C] border border-zinc-700 rounded-2xl px-6 py-4 focus:border-[#F5A623] outline-none text-white"></textarea><button type="submit" class="md:col-span-2 bg-[#F5A623] hover:bg-[#ffb84d] text-black font-bold py-4 rounded-2xl transition text-lg">SEND MESSAGE</button></form>
         </div>
-
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
             <div><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-[#F5A623] rounded-xl flex items-center justify-center"><i class="fa-solid fa-car-side text-black"></i></div><span class="text-2xl font-bold">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></div><p class="text-zinc-500">Expert driving lessons in Reading. Manual & Automatic specialists.</p></div>
-            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="index.html" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="aboutus.html" class="hover:text-[#F5A623] transition">About</a></li><li><a href="reviews.html" class="hover:text-[#F5A623] transition">Reviews</a></li><li><a href="faqs.html" class="hover:text-[#F5A623] transition">FAQs</a></li></ul></div>
+            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="index.html" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="aboutus.html" class="hover:text-[#F5A623] transition">About</a></li><li><a href="pricing.html" class="hover:text-[#F5A623] transition">Pricing</a></li><li><a href="faqs.html" class="hover:text-[#F5A623] transition">FAQs</a></li><li><a href="contactus.html" class="hover:text-[#F5A623] transition">Contact Us</a></li><li><a href="terms.html" class="hover:text-[#F5A623] transition">Terms & Conditions</a></li></ul></div>
             <div><h5 class="font-bold mb-5 text-lg">Services</h5><ul class="text-zinc-400 space-y-2"><li>Manual Lessons</li><li>Automatic Lessons</li><li>Intensive Courses</li><li>Motorway / Night Driving</li></ul></div>
-            <div><h5 class="font-bold mb-5 text-lg">Connect</h5>
-                <div class="flex gap-6 text-3xl text-[#F5A623]">
-                    <a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                    <a href="#" target="_blank" class="hover:scale-110 transition">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
+            <div><h5 class="font-bold mb-5 text-lg">Connect</h5><div class="flex gap-6 text-3xl text-[#F5A623]"><a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></a><a href="#" target="_blank" class="hover:scale-110 transition"><i class="fa-brands fa-instagram"></i></a><a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a></div></div>
         </div>
-
-        <!-- Centered Copyright -->
-        <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6">
-            <p class="text-sm text-zinc-500">
-                © 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.
-            </p>
-        </div>
+        <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6"><p class="text-sm text-zinc-500">© 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.</p></div>
     </footer>
 
     <script>
         // Initialize Swiper for Hero + Reviews
-        const heroSwiper = new Swiper('.hero-swiper', {
-            loop: true,
-            autoplay: { delay: 5000, disableOnInteraction: false },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            effect: 'fade',
-            fadeEffect: { crossFade: true },
-        });
+        const heroSwiper = new Swiper('.hero-swiper', { loop: true, autoplay: { delay: 5000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, effect: 'fade', fadeEffect: { crossFade: true } });
+        const reviewSwiper = new Swiper('.review-swiper', { slidesPerView: 1, spaceBetween: 25, loop: true, autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true }, speed: 4000, breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, pagination: { el: '.swiper-pagination', clickable: true }, allowTouchMove: true });
        
-        const reviewSwiper = new Swiper('.review-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 25,
-            loop: true,
-            autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true },
-            speed: 4000,
-            breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            allowTouchMove: true,
-            on: { init: function () { this.el.addEventListener('mouseenter', () => this.autoplay.stop()); this.el.addEventListener('mouseleave', () => this.autoplay.start()); } }
-        });
+        // Smooth scroll for hash links
+        document.querySelectorAll('.nav-link').forEach(anchor => { anchor.addEventListener('click', function(e) { const href = this.getAttribute('href'); if(href && href.startsWith('#')) { e.preventDefault(); const target = document.querySelector(href); if(target) target.scrollIntoView({ behavior: 'smooth' }); } }); });
        
-        // Smooth scroll for hash links ONLY (internal page sections)
-        document.querySelectorAll('.nav-link').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if(href && href.startsWith('#')) {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if(target) target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Navbar hide on scroll down, show on scroll up
-        let lastScrollTop = 0;
-        const navbar = document.getElementById('navbar');
-
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                navbar.style.transform = 'translateY(-100%)';
-            } else {
-                navbar.style.transform = 'translateY(0)';
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-
+        // Navbar hide on scroll
+        let lastScrollTop = 0; const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { const scrollTop = window.scrollY || document.documentElement.scrollTop; if (scrollTop > lastScrollTop && scrollTop > 100) { navbar.style.transform = 'translateY(-100%)'; } else { navbar.style.transform = 'translateY(0)'; } lastScrollTop = scrollTop; });
+       
         // Mobile Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const menuClose = document.getElementById('menuClose');
-
-        function openMenu() {
-            mobileMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        hamburger.addEventListener('click', openMenu);
-        menuClose.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
+        const hamburger = document.getElementById('hamburger'); const mobileMenu = document.getElementById('mobileMenu'); const menuOverlay = document.getElementById('menuOverlay'); const menuClose = document.getElementById('menuClose');
+        function openMenu() { mobileMenu.classList.add('active'); menuOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeMenu() { mobileMenu.classList.remove('active'); menuOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+        hamburger.addEventListener('click', openMenu); menuClose.addEventListener('click', closeMenu); menuOverlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.mobile-menu a').forEach(link => { link.addEventListener('click', closeMenu); });
     </script>
 </body>
 </html>
