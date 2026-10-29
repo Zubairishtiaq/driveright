@@ -1,573 +1,422 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Contact Us | DriveRight Premium Driving School Reading</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <!-- AOS Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-       
-        * {
-            font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
-        }
-       
-        :root {
-            --primary: #F5A623;
-            --primary-dark: #dc8e12;
-            --bg-deep: #05070A;
-            --bg-card: #11141C;
-        }
-       
-        body {
-            background: #020308;
-            color: #EFF3FC;
-            overflow-x: hidden;
-        }
-       
-        /* Glassmorphism Navbar */
-        .glass-nav {
-            background: rgba(5, 7, 10, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(245, 166, 35, 0.25);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-       
-        .nav-link {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-       
-        .nav-link:hover {
-            color: #F5A623;
-            transform: translateY(-2px);
-        }
-       
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: #F5A623;
-            transition: width 0.3s ease;
-        }
-       
-        .nav-link:hover::after {
-            width: 100%;
-        }
-       
-        .btn-primary {
-            background: linear-gradient(135deg, #F5A623 0%, #dc8e12 100%);
-            transition: all 0.3s;
-        }
-       
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px -5px rgba(245, 166, 35, 0.5);
-            filter: brightness(1.05);
-        }
-       
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #11141C;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #F5A623;
-            border-radius: 10px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | New Method Driving School</title>
+<meta name="description" content="Get in touch with New Method Driving School. Book lessons, ask questions, or find our location in Scarborough, ON.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --red:#CA3535;--red-dark:#a82b2b;--blue:#0253BB;--dark:#171717;
+  --text:#333333;--muted:#666666;--soft:#f9f9fa;--white:#ffffff;
+  --line:#e5e5e5;--shadow:0 6px 24px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.65;background:var(--white);overflow-x:hidden;-webkit-text-size-adjust:100%}
+h1,h2,h3,h4,h5,button,a{font-family:'Poppins',sans-serif}
+h1,h2,h3,h4{line-height:1.25;color:var(--dark)}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{display:block;max-width:100%}
+button{font:inherit;border:0;background:none;cursor:pointer}
+.wrap{width:min(1200px,calc(100% - 40px));margin:0 auto}
+.sec{padding:68px 0}
+.tc{text-align:center}
+.ttl{font-size:clamp(27px,4vw,38px);margin-bottom:14px}
+.ttl span,.section-heading h2 span{color:var(--red)}
+.sub{max-width:700px;margin:0 auto 38px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 24px;border:0;border-radius:8px;background:var(--red);color:#fff;font-weight:700;cursor:pointer;transition:background .2s,transform .2s}
+.btn:hover{background:var(--red-dark);transform:translateY(-2px)}
+.btn-blue{background:var(--blue);padding:15px 26px}
+.btn-blue:hover{background:#013e8f}
+.btn-outline{background:transparent;border:2px solid var(--dark);color:var(--dark);box-shadow:none}
+.btn-outline:hover{background:var(--dark);color:#fff}
 
-        /* Contact Cards */
-        .contact-card {
-            background: linear-gradient(145deg, #0A0C12 0%, #080A0F 100%);
-            border: 1px solid rgba(245, 166, 35, 0.12);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .contact-card:hover {
-            border-color: rgba(245, 166, 35, 0.5);
-            transform: translateY(-8px);
-        }
-        .contact-icon {
-            transition: all 0.3s ease;
-        }
-        .contact-card:hover .contact-icon {
-            transform: scale(1.1);
-            color: #F5A623;
-        }
+/* Header */
+header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 3px 12px rgba(0,0,0,.04)}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:18px;padding-top:12px;padding-bottom:12px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo img{width:auto;height:46px}
+.lt{display:flex;flex-direction:column;font-size:16px;font-weight:800;line-height:1.15;text-transform:uppercase}
+.lt .a{color:var(--red)}.lt .b{color:var(--dark)}
+.nav{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:700}
+.nav a:hover,.nav a.active{color:var(--red)}
+.hc{padding:7px 16px;text-align:center;background:var(--soft);border:1px solid var(--line);border-radius:8px;white-space:nowrap}
+.hc span{display:block;font-size:10px;font-weight:700;color:var(--red);text-transform:uppercase}
+.hc b{font-size:17px;color:var(--dark)}
+.mb{display:none;font-size:25px;padding:5px;color:var(--dark)}
+.mm{display:none;flex-direction:column;background:#fff;border-top:1px solid var(--line);padding:8px 0}
+.mm.on{display:flex}
+.mm a{padding:11px 20px;text-align:center;font-weight:700}
+.mm a:hover{color:var(--red);background:var(--soft)}
 
-        /* Form Styles */
-        .form-input {
-            background: #11141C;
-            border: 1px solid rgba(245, 166, 35, 0.2);
-            transition: all 0.3s ease;
-        }
-        .form-input:focus {
-            border-color: #F5A623;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.2);
-        }
+/* Clean Text Hero */
+.page-hero{
+  background-color: var(--white);
+  padding: 80px 0 40px;
+  text-align: center;
+}
+.page-hero h1{font-size:clamp(32px,4.5vw,48px);margin-bottom:16px;letter-spacing:-.5px;color:var(--dark)}
+.page-hero h1 span{color:var(--red)}
+.page-hero p{color:var(--muted);font-size:16px;max-width:650px;margin:0 auto}
 
-        /* Map Container */
-        .map-container {
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(245, 166, 35, 0.2);
-            transition: all 0.4s ease;
-        }
-        .map-container:hover {
-            border-color: rgba(245, 166, 35, 0.5);
-            transform: scale(1.01);
-        }
-        .map-container iframe {
-            width: 100%;
-            height: 400px;
-            border: 0;
-            filter: contrast(1.05) brightness(0.95);
-        }
+/* Section Headings */
+.section-heading{max-width:820px;margin:0 auto 38px;text-align:center}
+.section-heading h2{font-size:clamp(27px,3.8vw,37px);margin-bottom:12px;letter-spacing:-.4px}
+.section-heading p{font-size:15px;color:var(--muted)}
+.eyebrow{display:inline-block;margin-bottom:10px;color:var(--red);font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
 
-        /* Floating animation */
-        @keyframes floatSlow {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(1deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-        .floating-gold {
-            animation: floatSlow 5s ease-in-out infinite;
-        }
+/* Main Content Container with distinct white cards */
+.contact-section {
+  padding: 0 0 70px;
+  background: var(--white);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: stretch;
+}
 
-        /* Back to top */
-        .back-to-top {
-            position: fixed;
-            bottom: 90px;
-            right: 25px;
-            background: linear-gradient(135deg, #F5A623, #dc8e12);
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: black;
-            font-size: 1.5rem;
-            box-shadow: 0 8px 20px rgba(245,166,35,0.4);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 99;
-            cursor: pointer;
-        }
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .back-to-top:hover {
-            transform: translateY(-5px) scale(1.05);
-        }
+/* Card Style for both columns */
+.card-base {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.04);
+  height: 100%;
+}
 
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            width: 62px;
-            height: 62px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 34px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            z-index: 9999;
-            animation: pulse 2s infinite;
-            transition: all 0.3s ease;
-        }
-        .whatsapp-float:hover { transform: scale(1.12); background: #128C7E; }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+/* Contact Info Card */
+.contact-info h2{font-size:24px;margin-bottom:12px;color:var(--dark)}
+.contact-info h2 span{color:var(--red)}
+.contact-info > p{color:var(--muted);font-size:14px;margin-bottom:30px;line-height:1.7;border-bottom:1px solid var(--line);padding-bottom:20px}
+.info-item{display:flex;gap:16px;margin-bottom:22px;align-items:flex-start}
+.info-icon{
+  width:46px;height:46px;border-radius:10px;background:var(--soft);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--red);font-size:18px;flex-shrink:0;
+}
+.info-text h4{font-size:15px;margin-bottom:2px;color:var(--dark)}
+.info-text p, .info-text a{font-size:14px;color:var(--muted);line-height:1.5;display:block}
+.info-text a:hover{color:var(--red)}
+.social-links{display:flex;gap:12px;margin-top:30px;padding-top:20px;border-top:1px solid var(--line)}
+.social-links a{
+  width:40px;height:40px;border-radius:50%;background:var(--soft);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--dark);font-size:16px;transition:.3s;
+}
+.social-links a:hover{background:var(--red);color:#fff;transform:translateY(-3px)}
 
-        @media (max-width: 768px) {
-            .map-container iframe {
-                height: 300px;
-            }
-        }
-    </style>
+/* Contact Form Card */
+.contact-form-wrap h3{font-size:24px;margin-bottom:8px;color:var(--dark)}
+.contact-form-wrap > p{color:var(--muted);font-size:14px;margin-bottom:28px}
+.form-group{margin-bottom:20px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-label{display:block;font-size:13px;font-weight:600;color:var(--dark);margin-bottom:8px}
+.form-control{
+  width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:8px;
+  font-family:'Inter',sans-serif;font-size:14px;color:var(--text);background:var(--white);
+  transition:border-color .2s, box-shadow .2s;outline:none;
+}
+.form-control:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(202,53,53,.1)}
+textarea.form-control{resize:vertical;min-height:120px}
+.submit-btn{
+  width:100%;padding:15px;border-radius:8px;background:var(--red);color:#fff;
+  font:700 15px 'Poppins',sans-serif;border:0;cursor:pointer;transition:.3s;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.submit-btn:hover{background:var(--red-dark);transform:translateY(-2px)}
+
+/* Map Section (Full width card) */
+.map-section{padding:0 0 70px;background:var(--white)}
+.map-wrap{
+  border-radius:16px;overflow:hidden;box-shadow:var(--shadow);
+  border:1px solid var(--line);height:400px;width:100%;background:#e5e7eb;
+}
+.map-wrap iframe{width:100%;height:100%;border:0;display:block}
+
+/* FAQ Section (Full width card) */
+.faq-section{background:var(--white);padding:70px 0}
+.faq-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 50px 40px;
+  box-shadow: var(--shadow);
+}
+.faq-list{max-width:850px;margin:0 auto;display:grid;gap:12px}
+.faq-item{overflow:hidden;background:#fff;border:1px solid #dedede;border-radius:10px;transition:border-color .2s,box-shadow .2s}
+.faq-item.active{border-color:var(--red);box-shadow:0 3px 14px rgba(202,53,53,.07)}
+.faq-question{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:18px 20px;background:#fff;text-align:left;color:#222;font-size:16px;font-weight:700;line-height:1.45;transition:color .2s}
+.faq-question:hover,.faq-item.active .faq-question{color:var(--red)}
+.faq-toggle{display:flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#f7eeee;color:var(--red);font-size:20px;font-weight:400;transition:transform .2s,background .2s,color .2s}
+.faq-item.active .faq-toggle{transform:rotate(45deg);background:var(--red);color:#fff}
+.faq-answer{display:none;padding:0 20px 19px;color:#555;font-size:15px;line-height:1.75}
+.faq-item.active .faq-answer{display:block;animation:fadeIn .3s ease}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Footer */
+footer{padding:60px 0 24px;background:#171717;color:#c7c7c7}
+.fgd{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:30px;margin-bottom:38px}
+.fl{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.fl img{height:44px;padding:4px;border-radius:6px;background:#fff}
+.fl .lt .b{color:#fff}
+footer p{margin-bottom:13px;font-size:14px}
+footer h4{margin-bottom:17px;color:#fff;font-size:17px}
+footer li{margin-bottom:11px;font-size:14px}
+footer li a:hover{color:#ff7777}
+.so{display:flex;gap:9px}
+.so a{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#303030;color:#fff}
+.so a:hover{background:var(--red)}
+.fc{display:flex;gap:11px;margin-bottom:15px}
+.fc-icon{display:flex;align-items:center;justify-content:center;flex:0 0 34px;height:34px;border-radius:50%;background:#303030;color:#fff}
+.fc p{margin:0;overflow-wrap:anywhere}.fc .h{color:#fff;font-weight:700}
+.fbm{padding-top:22px;border-top:1px solid #383838;text-align:center;font-size:13px}
+
+/* Responsive */
+@media(max-width:1024px){
+ .nav{gap:13px;font-size:13px}.hc{padding:7px 10px}.hc b{font-size:15px}
+ .contact-grid{grid-template-columns:1fr;gap:40px}
+ .fgd{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .card-base { padding: 30px; }
+}
+@media(max-width:768px){
+ .wrap{width:calc(100% - 32px)}.sec{padding:48px 0}
+ .nav,.hc{display:none}.mb{display:block}.logo img{height:37px}.lt{font-size:14px}
+ .page-hero{padding:60px 0 30px}
+ .page-hero h1{font-size:32px}
+ .card-base { padding: 24px; }
+ .form-row{grid-template-columns:1fr;gap:0}
+ .fgd{gap:25px}
+ .faq-card { padding: 30px 20px; }
+ .faq-question{padding:16px;font-size:15px}
+ .faq-answer{padding:0 16px 17px;font-size:14px}
+}
+@media(max-width:480px){
+ .wrap{width:calc(100% - 28px)}
+ .fgd{grid-template-columns:1fr}
+ .page-hero h1{font-size:29px}
+ .section-heading{margin-bottom:28px}
+ .map-wrap{height:300px}
+}
+</style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav id="navbar" class="glass-nav sticky top-0 z-50 w-full">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#F5A623] to-[#dc8e12] rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-lg shadow-[#F5A623]/30 transform transition-all group-hover:scale-105">
-                    <i class="fa-solid fa-car-side text-black"></i>
-                </div>
-                <div>
-                    <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-[#F5A623]">DRIVE<span class="text-white">RIGHT</span></span>
-                    <div class="text-[8px] sm:text-[10px] tracking-wider text-[#F5A623]/70">SCHOOL OF MOTORING</div>
-                </div>
-            </a>
-           <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
-                <a href="index.html" class="nav-link text-white">Home</a>
-                <a href="/aboutus.html" class="nav-link text-white">About Our School</a>
-                <a href="pricing.html" class="nav-link text-white">Pricing</a>
-                <a href="faqs.html" class="nav-link text-white">FAQs</a>
-                                <a href="terms.html" class="nav-link text-white">Terms & Conditions</a>
+<header>
+ <div class="wrap hd">
+  <a href="index.html" class="logo"><img src="/logo.jpeg" alt="New Method Driving School logo"><span class="lt"><span class="a">New Method</span><span class="b">Driving School</span></span></a>
+  <nav class="nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="packages.html">Packages</a><a href="areas.html">Areas</a><a href="index.html#reviews">Reviews</a><a class="active" href="contact.html">Contact</a></nav>
+  <a class="hc" href="tel:9059222544"><span>Book Your Lessons Today!</span><b>905-922-2544</b></a>
+  <button class="mb" id="menuButton" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+ </div>
+ <nav class="mm" id="mobileMenu" aria-label="Mobile navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="packages.html">Packages</a><a href="areas.html">Areas</a><a href="index.html#reviews">Reviews</a><a href="contact.html">Contact</a></nav>
+</header>
 
-                <a href="contactus.html" class="nav-link text-white">Contact Us</a>
-            </div>
-            <a href="tel: 07532749660" class="bg-[#F5A623] hover:bg-[#ffb84d] transition-all px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-1 sm:gap-2 text-black shadow-lg shadow-[#F5A623]/25 text-sm sm:text-base">
-                <i class="fa-solid fa-phone-volume"></i>
-                <span class="hidden sm:inline"> 07532749660</span>
-                <span class="sm:hidden">Call</span>
-            </a>
+<main>
+
+<!-- Clean Text Hero -->
+<section class="page-hero">
+ <div class="wrap">
+  <h1>Get in Touch. <span>We're Here to Help.</span></h1>
+  <p>Have a question about our packages, booking a lesson, or picking up locations? Reach out to us and our team will get back to you as soon as possible.</p>
+ </div>
+</section>
+
+<!-- Contact Info & Form (Inside white cards) -->
+<section class="contact-section">
+ <div class="wrap contact-grid">
+  
+  <!-- Left Card: Contact Information -->
+  <div class="contact-info card-base">
+    <h2>Contact <span>Details</span></h2>
+    <p>We're ready to help you start your driving journey. Contact us directly or fill out the form and we'll be in touch.</p>
+    
+    <div class="info-item">
+      <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="info-text">
+        <h4>Our Location</h4>
+        <p>Scarborough, ON</p>
+      </div>
+    </div>
+    
+    <div class="info-item">
+      <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+      <div class="info-text">
+        <h4>Phone Number</h4>
+        <a href="tel:9059222544">905-922-2544</a>
+      </div>
+    </div>
+    
+    <div class="info-item">
+      <div class="info-icon"><i class="fas fa-envelope"></i></div>
+      <div class="info-text">
+        <h4>Email Address</h4>
+        <a href="mailto:info@newmethoddriving.ca">info@newmethoddriving.ca</a>
+      </div>
+    </div>
+    
+    <div class="info-item">
+      <div class="info-icon"><i class="fas fa-clock"></i></div>
+      <div class="info-text">
+        <h4>Business Hours</h4>
+        <p>Mon - Sat: 8:00 AM - 8:00 PM<br>Sunday: Closed</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+
+  <!-- Right Card: Contact Form -->
+  <div class="contact-form-wrap card-base">
+    <h3>Send Us a Message</h3>
+    <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+    
+    <form action="#" method="POST" id="contactForm">
+      <div class="form-group">
+        <label class="form-label" for="name">Full Name *</label>
+        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address *</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative py-24 md:py-32 overflow-hidden">
-        <div class="absolute inset-0 opacity-30">
-            <div class="absolute top-20 left-10 w-80 h-80 bg-[#F5A623]/10 rounded-full blur-3xl floating-gold"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-[#F5A623]/5 rounded-full blur-3xl floating-gold" style="animation-delay: 2s;"></div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" class="form-control" placeholder="905-000-0000" required>
         </div>
-        <div class="max-w-5xl mx-auto px-6 text-center relative">
-            <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md px-5 sm:px-6 py-2 rounded-full mb-6 border border-[#F5A623]/40" data-aos="fade-down">
-                <i class="fa-regular fa-message text-[#F5A623] text-base sm:text-lg"></i>
-                <span class="text-xs sm:text-sm tracking-wide font-semibold">Get In Touch • 24/7 Support</span>
-            </div>
-            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6" data-aos="fade-up">Contact <span class="text-[#F5A623]">Us</span></h1>
-            <p class="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Have questions? Ready to book your first lesson? We're here to help. Reach out to us anytime.</p>
-            <div class="w-20 sm:w-28 h-1 bg-gradient-to-r from-[#F5A623] to-transparent mx-auto mt-6 sm:mt-8 rounded-full"></div>
-        </div>
-    </section>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="subject">Subject</label>
+        <select id="subject" name="subject" class="form-control">
+          <option value="">Select a topic...</option>
+          <option value="booking">Booking a Lesson</option>
+          <option value="packages">Package Inquiry</option>
+          <option value="pricing">Pricing Question</option>
+          <option value="general">General Question</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="message">Message *</label>
+        <textarea id="message" name="message" class="form-control" placeholder="How can we help you?" required></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+    </form>
+  </div>
 
-    <!-- Contact Info Cards -->
-    <section class="py-12 md:py-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-                <!-- Phone Card -->
-                <div class="contact-card p-6 md:p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="50">
-                    <div class="contact-icon w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-2xl flex items-center justify-center text-3xl text-[#F5A623] mb-5">
-                        <i class="fa-solid fa-phone-volume"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Call Us</h3>
-                    <p class="text-zinc-400 mb-4">Monday to Saturday, 7:30AM - 5PM</p>
-                    <a href="tel: 07532749660" class="text-2xl font-bold text-[#F5A623] hover:text-white transition">+44 7532 749660</a>
-                </div>
+ </div>
+</section>
 
-                <!-- WhatsApp Card -->
-                <div class="contact-card p-6 md:p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="contact-icon w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-2xl flex items-center justify-center text-3xl text-[#F5A623] mb-5">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">WhatsApp</h3>
-                    <p class="text-zinc-400 mb-4">Instant messaging & quick replies</p>
-                    <a href="https://wa.me/447532749660" class="text-2xl font-bold text-[#F5A623] hover:text-white transition">+44 7532 749660</a>
-                </div>
+<!-- Map Section (Full width card) -->
+<section class="map-section">
+  <div class="wrap">
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2879.857157336397!2d-79.25774658449483!3d43.77607097911788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d1a100000001%3A0x2d3f2a1b0c9e8f7d!2sScarborough%2C%20ON!5e0!3m2!1sen!2sca!4v1620000000000!5m2!1sen!2sca" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="New Method Driving School Location"></iframe>
+    </div>
+  </div>
+</section>
 
-                <!-- Email Card -->
-                <div class="contact-card p-6 md:p-8 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="150">
-                    <div class="contact-icon w-20 h-20 mx-auto bg-[#F5A623]/10 rounded-2xl flex items-center justify-center text-3xl text-[#F5A623] mb-5">
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Email Us</h3>
-                    <p class="text-zinc-400 mb-4">We'll respond within 24 hours</p>
-                    <a href="mailto:Taimurmasood3@gmail.com" class="text-xl font-semibold text-[#F5A623] hover:text-white transition break-all">Taimurmasood3@gmail.com</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FAQ Section (Full width card) -->
+<section class="faq-section" id="faqs">
+ <div class="wrap">
+  <div class="faq-card">
+    <div class="section-heading"><div class="eyebrow">Helpful Answers</div><h2>Frequently Asked <span>Questions</span></h2><p>Quick answers before you reach out to our team.</p></div>
+    <div class="faq-list">
+     <article class="faq-item active">
+      <button class="faq-question" type="button">How quickly will I get a response?<span class="faq-toggle">+</span></button>
+      <div class="faq-answer">We aim to respond to all inquiries within 24 hours during business days. For urgent matters, please call us directly at 905-922-2544.</div>
+     </article>
+     <article class="faq-item">
+      <button class="faq-question" type="button">Can I book a lesson over the phone?<span class="faq-toggle">+</span></button>
+      <div class="faq-answer">Yes! You can call us directly at 905-922-2544 to book a lesson, ask about package availability, or discuss scheduling.</div>
+     </article>
+     <article class="faq-item">
+      <button class="faq-question" type="button">Do you offer pick-up and drop-off?<span class="faq-toggle">+</span></button>
+      <div class="faq-answer">Free pick-up and drop-off are included in our BDE packages. When you contact us, please provide your address so we can confirm availability in your area.</div>
+     </article>
+     <article class="faq-item">
+      <button class="faq-question" type="button">What areas do you serve?<span class="faq-toggle">+</span></button>
+      <div class="faq-answer">We primarily serve Scarborough, Pickering, and Ajax. Contact us to confirm if we can accommodate your specific location.</div>
+     </article>
+    </div>
+  </div>
+ </div>
+</section>
 
-    <!-- Contact Form & Map Section -->
-    <section class="py-12 md:py-20 bg-[#0A0C12]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Contact Form -->
-                <div data-aos="fade-right">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Send Us a <span class="text-[#F5A623]">Message</span></h2>
-                    <p class="text-zinc-400 mb-8">Fill out the form below and we'll get back to you as soon as possible.</p>
-                    
-                    <form id="contactForm" class="space-y-5">
-                        <div class="grid sm:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-zinc-300">Full Name *</label>
-                                <input type="text" id="name" required class="form-input w-full px-5 py-3 rounded-xl text-white placeholder:text-zinc-500">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-zinc-300">Phone Number *</label>
-                                <input type="tel" id="phone" required class="form-input w-full px-5 py-3 rounded-xl text-white placeholder:text-zinc-500">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2 text-zinc-300">Email Address *</label>
-                            <input type="email" id="email" required class="form-input w-full px-5 py-3 rounded-xl text-white placeholder:text-zinc-500">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2 text-zinc-300">Subject</label>
-                            <select id="subject" class="form-input w-full px-5 py-3 rounded-xl text-white">
-                                <option value="general" class="bg-[#11141C]">General Enquiry</option>
-                                <option value="booking" class="bg-[#11141C]">Book a Lesson</option>
-                                <option value="pricing" class="bg-[#11141C]">Pricing Question</option>
-                                <option value="other" class="bg-[#11141C]">Other</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2 text-zinc-300">Message *</label>
-                            <textarea id="message" rows="5" required class="form-input w-full px-5 py-3 rounded-xl text-white placeholder:text-zinc-500 resize-none"></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary w-full py-4 rounded-xl text-black font-bold text-lg transition-all">
-                            <i class="fa-regular fa-paper-plane mr-2"></i> Send Message
-                        </button>
-                        <p class="text-xs text-zinc-500 text-center mt-3">We respect your privacy. Your information will never be shared.</p>
-                    </form>
-                    
-                    <!-- Success Message -->
-                    <div id="successMessage" class="hidden mt-4 p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-center">
-                        <i class="fa-regular fa-circle-check text-green-500 text-xl mr-2"></i>
-                        <span class="text-green-400">Message sent successfully! We'll contact you soon.</span>
-                    </div>
-                </div>
+</main>
 
-                <!-- Map & Location Info -->
-                <div data-aos="fade-left">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Find <span class="text-[#F5A623]">Us</span></h2>
-                    <p class="text-zinc-400 mb-6">Visit our location or get directions using the map below.</p>
-                    
-                    <!-- Map Container -->
-                    <div class="map-container mb-6">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.488487157327!2d-0.9769435499999999!3d51.44918714999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48769b13156fc395%3A0xaac1c527ff4ba0ca!2sGarnet%20St%2C%20Reading%20RG1%206BA%2C%20UK!5e0!3m2!1sen!2s!4v1778704821770!5m2!1sen!2s" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                    
-                    <!-- Address Details -->
-                    <div class="bg-[#11141C] p-6 rounded-2xl border border-[#F5A623]/10">
-                        <div class="flex items-start gap-4 mb-4">
-                            <i class="fa-solid fa-location-dot text-2xl text-[#F5A623] mt-1"></i>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Our Location</h4>
-                                <p class="text-zinc-400">Garnet St, Reading RG1 6BA, United Kingdom</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 mb-4">
-                            <i class="fa-regular fa-clock text-2xl text-[#F5A623] mt-1"></i>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Opening Hours</h4>
-                                <p class="text-zinc-400">Monday - Friday: 7:30 AM - 6:00 PM</p>
-                                <p class="text-zinc-400">Saturday: 8:00 AM - 4:00 PM</p>
-                                <p class="text-zinc-400">Sunday: Closed</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <i class="fa-solid fa-car-side text-2xl text-[#F5A623] mt-1"></i>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Service Areas</h4>
-                                <p class="text-zinc-400">Reading, Caversham, Tilehurst, Earley, Woodley, Whitley, and surrounding Berkshire areas.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer id="contact">
+ <div class="wrap">
+  <div class="fgd">
+   <div><div class="fl"><img src="/logo.jpeg" alt="New Method Driving School logo"><span class="lt"><span class="a">New Method</span><span class="b">Driving School</span></span></div><p>At New Method Driving School, we aim to help learners build safe driving habits, confidence and practical skills for the road.</p><div class="so"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">◎</a></div></div>
+   <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="packages.html">Packages</a></li><li><a href="index.html#reviews">Reviews</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="blog.html">Blogs</a></li></ul></div>
+   <div><h4>Service Areas</h4><ul><li><a href="areas.html#scarborough">Scarborough</a></li><li><a href="areas.html#pickering">Pickering</a></li><li><a href="areas.html#ajax">Ajax</a></li></ul></div>
+   <div><h4>Contact Details</h4>
+    <div class="fc"><span class="fc-icon">⌖</span><div><p class="h">Address</p><p>Scarborough, ON</p></div></div>
+    <div class="fc"><span class="fc-icon">☎</span><div><p class="h">Phone Number</p><p><a href="tel:9059222544">905-922-2544</a></p></div></div>
+    <div class="fc"><span class="fc-icon">✉</span><div><p class="h">Email</p><p><a href="mailto:info@newmethoddriving.ca">info@newmethoddriving.ca</a></p></div></div>
+   </div>
+  </div>
+  <div class="fbm">© 2026 New Method Driving School. All Rights Reserved.</div>
+ </div>
+</footer>
 
-    <!-- Business Hours & Quick Response Section -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-10 items-center">
-                <div data-aos="fade-right">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Quick <span class="text-[#F5A623]">Response</span> Guaranteed</h2>
-                    <p class="text-zinc-400 mb-6 leading-relaxed">We understand that choosing the right driving school is an important decision. Our team is dedicated to answering all your questions promptly and helping you start your driving journey with confidence.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-regular fa-clock text-[#F5A623] text-xl"></i>
-                            <span class="text-zinc-300">Response within 24 hours for emails</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-brands fa-whatsapp text-[#F5A623] text-xl"></i>
-                            <span class="text-zinc-300">Instant replies on WhatsApp during business hours</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-phone text-[#F5A623] text-xl"></i>
-                            <span class="text-zinc-300">Call us directly for immediate assistance</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-                    <div class="bg-[#11141C] p-5 rounded-2xl text-center border border-white/5">
-                        <i class="fa-regular fa-message text-3xl text-[#F5A623] mb-2"></i>
-                        <p class="text-2xl font-bold text-[#F5A623]">24h</p>
-                        <p class="text-xs text-zinc-500">Email Response</p>
-                    </div>
-                    <div class="bg-[#11141C] p-5 rounded-2xl text-center border border-white/5">
-                        <i class="fa-regular fa-clock text-3xl text-[#F5A623] mb-2"></i>
-                        <p class="text-2xl font-bold text-[#F5A623]">7:30AM</p>
-                        <p class="text-xs text-zinc-500">Early Start</p>
-                    </div>
-                    <div class="bg-[#11141C] p-5 rounded-2xl text-center border border-white/5">
-                        <i class="fa-solid fa-calendar-check text-3xl text-[#F5A623] mb-2"></i>
-                        <p class="text-2xl font-bold text-[#F5A623]">6 Days</p>
-                        <p class="text-xs text-zinc-500">Weekly Service</p>
-                    </div>
-                    <div class="bg-[#11141C] p-5 rounded-2xl text-center border border-white/5">
-                        <i class="fa-solid fa-headset text-3xl text-[#F5A623] mb-2"></i>
-                        <p class="text-2xl font-bold text-[#F5A623]">Live</p>
-                        <p class="text-xs text-zinc-500">Support</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+// Mobile Menu Toggle
+const menuButton = document.getElementById('menuButton');
+const mobileMenu = document.getElementById('mobileMenu');
+menuButton.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('on');
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+  menuButton.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  menuButton.textContent = isOpen ? '×' : '☰';
+});
+mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  mobileMenu.classList.remove('on');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Open menu');
+  menuButton.textContent = '☰';
+}));
 
-    <!-- FAQ Contact Section -->
-    <section class="py-20 bg-[#0A0C12]">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 bg-[#F5A623]/10 px-5 py-2 rounded-full mb-6">
-                <i class="fa-regular fa-circle-question text-[#F5A623]"></i>
-                <span class="text-sm font-semibold text-[#F5A623]">Before You Contact Us</span>
-            </div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Frequently Asked <span class="text-[#F5A623]">Questions</span></h2>
-            <p class="text-zinc-400 mb-8 max-w-2xl mx-auto">Find quick answers to common questions. For anything else, we're just a message away!</p>
-            <div class="grid sm:grid-cols-2 gap-4 text-left">
-                <div class="bg-[#11141C] p-5 rounded-xl">
-                    <p class="font-semibold text-[#F5A623] mb-2">💷 How much are lessons?</p>
-                    <p class="text-zinc-400 text-sm">Manual: £43/hr | Auto: £45/hr. Block bookings save you more!</p>
-                </div>
-                <div class="bg-[#11141C] p-5 rounded-xl">
-                    <p class="font-semibold text-[#F5A623] mb-2">📍 Where do you cover?</p>
-                    <p class="text-zinc-400 text-sm">Reading and surrounding Berkshire areas. Free pick-up included.</p>
-                </div>
-                <div class="bg-[#11141C] p-5 rounded-xl">
-                    <p class="font-semibold text-[#F5A623] mb-2">📅 How to book a lesson?</p>
-                    <p class="text-zinc-400 text-sm">Call, WhatsApp, or email us. We'll schedule your first lesson.</p>
-                </div>
-                <div class="bg-[#11141C] p-5 rounded-xl">
-                    <p class="font-semibold text-[#F5A623] mb-2">✅ Do you help with theory test?</p>
-                    <p class="text-zinc-400 text-sm">Yes! Free theory test support for all block booking students.</p>
-                </div>
-            </div>
-            <div class="mt-8">
-                <a href="faqs.html" class="text-[#F5A623] hover:text-white transition inline-flex items-center gap-2">
-                    View All FAQs <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+// FAQ Accordion - Perfectly functioning (opens one at a time)
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.faq-item');
+    const isCurrentlyOpen = item.classList.contains('active');
+    
+    // Close all items
+    document.querySelectorAll('.faq-item').forEach(faq => {
+      faq.classList.remove('active');
+    });
+    
+    // If it wasn't open, open it now
+    if (!isCurrentlyOpen) {
+      item.classList.add('active');
+    }
+  });
+});
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-br from-[#F5A623]/10 via-[#020308] to-[#020308]">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">Ready to Start Your <span class="text-[#F5A623]">Driving Journey</span>?</h2>
-            <p class="text-zinc-400 mb-6" data-aos="fade-up" data-aos-delay="100">Don't wait any longer. Contact us today and take the first step toward driving freedom.</p>
-            <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
-                <a href="tel: 07532749660" class="btn-primary px-8 py-4 rounded-xl text-black font-bold text-lg inline-flex items-center gap-2"><i class="fa-solid fa-phone"></i> Call Now</a>
-                <a href="https://wa.me/447532749660" class="border border-[#F5A623] px-8 py-4 rounded-xl text-[#F5A623] hover:bg-[#F5A623]/10 transition text-lg font-semibold inline-flex items-center gap-2"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-     <!-- Footer -->
-    <footer class="bg-[#05070A] py-16 border-t border-[#F5A623]/20">
- <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
-            <div><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-[#F5A623] rounded-xl flex items-center justify-center"><i class="fa-solid fa-car-side text-black"></i></div><span class="text-2xl font-bold">𝘿𝙧𝙞𝙫𝙚𝙍𝙞𝙜𝙝𝙩 </span></div><p class="text-zinc-500">Expert driving lessons in Reading. Manual & Automatic specialists.</p></div>
-            <div><h5 class="font-bold mb-5 text-lg">Quick Links</h5><ul class="space-y-2 text-zinc-400"><li><a href="index.html" class="hover:text-[#F5A623] transition">Home</a></li><li><a href="aboutus.html" class="hover:text-[#F5A623] transition">About</a></li>
-                <li><a href="pricing.html" class="hover:text-[#F5A623] transition">Pricing</a></li>
-                <li><a href="faqs.html" class="hover:text-[#F5A623] transition">FAQs</a></li>
-                 <li><a href="contactus.html" class="hover:text-[#F5A623] transition">Contact Us</a></li>
-                <li><a href="terms.html" class="hover:text-[#F5A623] transition">Terms & Conditions</a></li>
-            </ul></div>
-            <div><h5 class="font-bold mb-5 text-lg">Services</h5><ul class="text-zinc-400 space-y-2"><li>Manual Lessons</li><li>Automatic Lessons</li><li>Intensive Courses</li><li>Motorway / Night Driving</li></ul></div>
-            <div><h5 class="font-bold mb-5 text-lg">Connect</h5>
-                <div class="flex gap-6 text-3xl text-[#F5A623]">
-                    <a href="https://www.facebook.com/share/19kfHmJ88o/?mibextid=wwXIfr" target="_blank" class="hover:scale-110 transition">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                    <a href="#" target="_blank" class="hover:scale-110 transition">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/447532749660" target="_blank" class="hover:scale-110 transition">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-  <!-- Centered Copyright -->
-   <div class="text-center mt-12 pt-8 border-t border-zinc-800/50 max-w-7xl mx-auto px-6">
-    <p class="text-sm text-zinc-500">
-        © 2026 <span style="color: #F5A623; font-weight: bold;">Zubair Ishtiaq</span>. All rights reserved.
-    </p>
-</div>
-    </footer>
-    <!-- Floating Elements -->
-    <a href="https://wa.me/447532749660" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-    <div class="back-to-top" id="backToTop"><i class="fa-solid fa-chevron-up"></i></div>
-
-    <script>
-        AOS.init({ duration: 800, once: true, offset: 50 });
-        
-        // Back to top
-        const backBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => { backBtn.classList.toggle('show', window.scrollY > 500); });
-        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-        
-        // Navbar hide on scroll
-        let lastScroll = 0;
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            let current = window.scrollY;
-            if (current > lastScroll && current > 120) navbar.style.transform = 'translateY(-100%)';
-            else navbar.style.transform = 'translateY(0)';
-            lastScroll = current;
-        });
-
-        // Form submission handling
-        const contactForm = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Simple validation
-            if (name && phone && email && message) {
-                // Show success message
-                successMessage.classList.remove('hidden');
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    successMessage.classList.add('hidden');
-                }, 5000);
-                
-                // In a real implementation, you would send this data to a server
-                console.log('Form submitted:', { name, phone, email, subject, message });
-            }
-        });
-    </script>
+// Simple form submission prevention (for demo purposes)
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thank you for your message! We will get back to you shortly. (Note: This is a demo form, please connect it to your backend or email service).');
+  this.reset();
+});
+</script>
 </body>
 </html>
